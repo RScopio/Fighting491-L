@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Todo:
+/// -when holding left/right then down, crouch activates but stays walking animation
+/// </summary>
+
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer), typeof(Rigidbody2D))]
 public class DefaultController : MonoBehaviour
 {
@@ -74,34 +79,46 @@ public class DefaultController : MonoBehaviour
         if (vert > 0 && ground)
         {
             //jump
-            ground = false;
+            //ground = false;
         }
 
         if (horiz > 0)
         {
-            transform.Translate(Vector2.right * Speed * Time.deltaTime);
+            if (!crouch)
+            {
+                transform.Translate(Vector2.right * Speed * Time.deltaTime);
+            }
             render.flipX = false;
         }
 
         if (horiz < 0)
         {
-            transform.Translate(Vector2.left * Speed * Time.deltaTime);
+            if (!crouch)
+            {
+                transform.Translate(Vector2.left * Speed * Time.deltaTime);
+            }
             render.flipX = true;
         }
 
 
 
-        anim.SetFloat("Speed", Mathf.Abs(horiz));
+
+    }
+
+    void Attack()
+    {
+        
     }
 
     void Update()
     {
+        Attack();
         Movement();
         //check other actions
 
         anim.SetBool("Crouch", crouch);
         anim.SetBool("Ground", ground);
-
+        anim.SetFloat("Speed", Mathf.Abs(horiz));
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
