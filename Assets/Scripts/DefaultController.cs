@@ -1,57 +1,107 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// Todo:
-/// -when holding left/right then down, crouch activates but stays walking animation
-/// </summary>
-
-[RequireComponent(typeof(Animator), typeof(SpriteRenderer), typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class DefaultController : MonoBehaviour
 {
-    private enum AnimState
+    /// <summary>
+    /// Notes:
+    /// -Input Manager
+    /// -int PlayerNumber
+    /// -Transform Enemy
+    /// -Health Script
+    /// -bool for each animation state
+    /// 
+    /// start, update, fixed update, ongroundcheck, updateanimator, oncollision enter& exit
+    /// 
+    /// possible switch to brawler style
+    /// move, jump, crouch
+    /// Mid Attack, Mid Power Attack (Power is slower but does more damage and is longer range)
+    /// Low Attack, Low Power Attack
+    /// Air Attack, Air Power Attack
+    /// Block (Blocks mid & high), Low Block (blocks low & mid)
+    /// Grab
+    /// Special Attack
+    /// </summary>
+
+    private enum Direction
     {
-        idle,
-        walk,
-        crouch,
-        punch,
-        kick,
-        block
+        left,
+        right
     };
 
     public float Speed = 1;
     bool crouch = false;
-    bool ground = false;
-    float horiz = 0;
-    float vert = 0;
+    bool onGround = false;
+    bool punch = false;
 
     Animator anim;
-    SpriteRenderer render;
     Rigidbody2D body;
-    AnimState state = AnimState.idle;
+
+    float horiz;
+    float vert;
+    //max speed, jump force, jump duration, attack rate
+    //Vector3 movement
+    //bool for states
+
+    Direction direct = Direction.right;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
-        render = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
+    }
+
+    void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            punch = true;
+        }
+        else
+        {
+            punch = false;
+        }
+    }
+
+    void UpdateDirection()
+    {
+        //if enemy pos < pos::localScale = -1,1,1 else 1,1,1(flip using scale)
+        if (direct == Direction.left)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (direct == Direction.right)
+        {
+            transform.localScale = Vector3.one;
+        }
+    }
+
+    void OnGroundCheck()
+    {
+
     }
 
     void Movement()
     {
+        #region Horizontal Input
         if (Input.GetKey(KeyCode.RightArrow))
         {
             horiz = 1;
+            direct = Direction.right;
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             horiz = -1;
+            direct = Direction.left;
         }
         else
         {
             horiz = 0;
         }
+        #endregion
 
+        #region Vertical Input
         if (Input.GetKey(KeyCode.UpArrow))
         {
             vert = 1;
@@ -64,68 +114,63 @@ public class DefaultController : MonoBehaviour
         {
             vert = 0;
         }
+        #endregion
 
-
-        if (vert < 0 && ground)
+        if (vert < 0 && onGround)
         {
             crouch = true;
-            anim.SetBool("Crouch", true);
         }
         else
         {
             crouch = false;
         }
 
-        if (vert > 0 && ground)
+        if (vert > 0 && onGround)
         {
             //jump
             //ground = false;
         }
 
-        if (horiz > 0)
+
+        if (!crouch && !anim.GetCurrentAnimatorStateInfo(0).IsName("punch"))
         {
-            if (!crouch)
+            if (horiz != 0)
             {
                 transform.Translate(Vector2.right * Speed * Time.deltaTime);
             }
-            render.flipX = false;
         }
-
-        if (horiz < 0)
-        {
-            if (!crouch)
-            {
-                transform.Translate(Vector2.left * Speed * Time.deltaTime);
-            }
-            render.flipX = true;
-        }
-
-
-
-
     }
 
-    void Attack()
+    void UpdateAnimator()
     {
-        
+        anim.SetBool("Crouch", crouch);
+        anim.SetBool("Ground", onGround);
+        anim.SetBool("Punch", punch);
+        anim.SetFloat("Speed", Mathf.Abs(horiz));
     }
 
     void Update()
     {
         Attack();
+        UpdateDirection();
+        OnGroundCheck();
         Movement();
-        //check other actions
-
-        anim.SetBool("Crouch", crouch);
-        anim.SetBool("Ground", ground);
-        anim.SetFloat("Speed", Mathf.Abs(horiz));
+        UpdateAnimator();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
-            ground = true;
+            onGround = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            onGround = false;
         }
     }
 }
