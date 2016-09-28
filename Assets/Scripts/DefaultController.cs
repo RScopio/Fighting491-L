@@ -33,6 +33,7 @@ public class DefaultController : MonoBehaviour
     };
 
     public float Speed = 1;
+    public float JumpForce = 3;
     bool crouch = false;
     bool onGround = false;
     bool attack = false;
@@ -43,7 +44,7 @@ public class DefaultController : MonoBehaviour
 
     float horiz;
     float vert;
-    //max speed, jump force, jump duration, attack rate
+    //max speed, jump duration?, attack rate?
     //Vector3 movement
     //bool for states
 
@@ -139,8 +140,7 @@ public class DefaultController : MonoBehaviour
 
         if (vert > 0 && onGround)
         {
-            //jump
-            //ground = false;
+            body.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         }
 
 
