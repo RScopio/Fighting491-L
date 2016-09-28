@@ -22,6 +22,8 @@ public class DefaultController : MonoBehaviour
     /// Block (Blocks mid & high), Low Block (blocks low & mid)
     /// Grab
     /// Special Attack
+    /// 
+    /// Transition from attack <-> power needs fixing
     /// </summary>
 
     private enum Direction
@@ -33,7 +35,8 @@ public class DefaultController : MonoBehaviour
     public float Speed = 1;
     bool crouch = false;
     bool onGround = false;
-    bool punch = false;
+    bool attack = false;
+    bool power = false;
 
     Animator anim;
     Rigidbody2D body;
@@ -54,13 +57,22 @@ public class DefaultController : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            punch = true;
+            attack = true;
         }
         else
         {
-            punch = false;
+            attack = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            power = true;
+        }
+        else
+        {
+            power = false;
         }
     }
 
@@ -145,7 +157,8 @@ public class DefaultController : MonoBehaviour
     {
         anim.SetBool("Crouch", crouch);
         anim.SetBool("Ground", onGround);
-        anim.SetBool("Punch", punch);
+        anim.SetBool("Attack", attack);
+        anim.SetBool("Power", power);
         anim.SetFloat("Speed", Mathf.Abs(horiz));
     }
 
