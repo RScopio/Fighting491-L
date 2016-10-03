@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using System.IO;
 
 public class CharacterSelectManager : MonoBehaviour {
 
@@ -20,6 +22,7 @@ public class CharacterSelectManager : MonoBehaviour {
 
 	private bool isSelected;
 	private bool characterIsSelected;
+	public Image characterBackgroundPortait;
 
 	public void TransitionToFightingScene(int sceneIndex){
 		SceneManager.LoadScene (sceneIndex);
@@ -40,6 +43,9 @@ public class CharacterSelectManager : MonoBehaviour {
 			
 			return;
 		}
+
+
+
 	
 
 		if (Input.GetAxisRaw ("StartButton") != 0 || Input.GetAxisRaw("PS4_X") != 0) {
@@ -50,6 +56,20 @@ public class CharacterSelectManager : MonoBehaviour {
 
 			animator.SetBool ("isReady", true);
 		}
+
+//		if (Input.GetAxisRaw ("Horizontal") == 0 && Input.GetAxisRaw ("Vertical") == 0) {
+//			
+//			string tempSpriteName = selectedGameObject.GetComponent<Image> ().sprite.name;
+//			foreach (KeyValuePair<string,string> name in GameManager.characters) {
+//				
+//				if (tempSpriteName == name.Value) {
+//					Debug.Log (name.Key + " is inside " + tempSpriteName);
+//					characterBackgroundPortait.sprite = Resources.Load<Sprite> ("Textures/streetfighterlargePortraits/" + name.Key);
+//					break;
+//				}
+//			}
+//		}
+//		Debug.Log (Input.GetAxisRaw ("Horizontal")+ "" + Input.GetAxisRaw ("Vertical"));
 
 	
 	}
