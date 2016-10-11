@@ -151,6 +151,7 @@ public class DefaultController : MonoBehaviour
                 transform.Translate(Vector2.right * Speed * Time.deltaTime);
             }
         }
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     void UpdateAnimator()
