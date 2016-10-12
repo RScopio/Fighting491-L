@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
 		{"guile" , "fighterselect_3"},
 		{"ken" , "fighterselect_4"},
 		{"chunli" , "fighterselect_5"},
-		{"zangeif" , "fighterselect_6"},
+		{"zangief" , "fighterselect_6"},
 		{"dhalsim" , "fighterselect_7"}
 	};
 

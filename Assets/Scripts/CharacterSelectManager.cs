@@ -30,6 +30,7 @@ public class CharacterSelectManager : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		
 		animator = readyButton.GetComponentInParent<Animator> ();
 		animator.SetBool ("isReady", false);
 		characterIsSelected = false;

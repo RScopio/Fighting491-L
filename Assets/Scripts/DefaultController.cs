@@ -35,7 +35,7 @@ public class DefaultController : MonoBehaviour
     public float Speed = 1;
     public float JumpForce = 3;
     bool crouch = false;
-    bool onGround = false;
+	bool onGround = false;
     bool attack = false;
     bool power = false;
 
@@ -82,11 +82,14 @@ public class DefaultController : MonoBehaviour
         //if enemy pos < pos::localScale = -1,1,1 else 1,1,1(flip using scale)
         if (direct == Direction.left)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+			
+				transform.localScale = new Vector3(-1, 1, 1);
+			
         }
         else if (direct == Direction.right)
         {
-            transform.localScale = Vector3.one;
+			transform.localScale = Vector2.one;
+            
         }
     }
 

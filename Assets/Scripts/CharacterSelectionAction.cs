@@ -10,8 +10,8 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 	public string character;
 	private GameManager gameManager;
 	public EventSystem eventsystem;
-	public Image characterBackgroundPortait;
-
+	public GameObject characterBackgroundPortait;
+	public GameObject characterSelectionSprite;
 	public void start(){
 		
 	}
@@ -20,28 +20,23 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 	}
 
 	public void OnPointerEnter(PointerEventData eventData){
-//		foreach (KeyValuePair<string,string> name in GameManager.characters) {
-//			//Debug.Log (name.Value + " is inside " + gameObject.GetComponent<Image>().sprite.name);
-//			if (gameObject.GetComponent<Image>().sprite.name == name.Value) {
-//				Debug.Log (name.Key + " is inside " + gameObject.GetComponent<Image>().sprite.name);
-//				Sprite tempSprite = Resources.Load<Sprite> ("Textures/streetfighterlargePortraits/" + name.Key);
-//				characterBackgroundPortait.sprite = tempSprite;
-//				break;
-//			}
-//		}
+
 
 			
 
 	}
 
 	public void OnSelect(BaseEventData eventData){
-		Debug.Log ("awesome");
+		
+
 		foreach (KeyValuePair<string,string> name in GameManager.characters) {
-			Debug.Log ( gameObject.GetComponent<Image>().sprite.name +" is inside " + name.Value);
+			
 			if (gameObject.GetComponent<Image>().sprite.name == name.Value) {
-				//Debug.Log (name.Key + " is inside " + gameObject.GetComponent<Image>().sprite.name);
+
 				Sprite tempSprite = Resources.Load<Sprite> ("Textures/streetfighterlargePortraits/" + name.Key);
-				characterBackgroundPortait.sprite = tempSprite;
+				characterBackgroundPortait.GetComponent<Image>().sprite = tempSprite;
+				//characterSelectionSprite.GetComponent<Image> ().sprite;
+
 				break;
 			}
 		}
