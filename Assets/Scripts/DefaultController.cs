@@ -39,6 +39,7 @@ public class DefaultController : MonoBehaviour
     bool attack = false;
     bool power = false;
 
+
     Animator anim;
     Rigidbody2D body;
 
@@ -47,6 +48,8 @@ public class DefaultController : MonoBehaviour
     //max speed, jump duration?, attack rate?
     //Vector3 movement
     //bool for states
+
+    public AudioClip attackSound;
 
     Direction direct = Direction.right;
 
@@ -61,6 +64,7 @@ public class DefaultController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             attack = true;
+            SoundManager.instance.PlaySingle(attackSound);
         }
         else
         {
@@ -154,6 +158,7 @@ public class DefaultController : MonoBehaviour
                 transform.Translate(Vector2.right * Speed * Time.deltaTime);
             }
         }
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     void UpdateAnimator()
