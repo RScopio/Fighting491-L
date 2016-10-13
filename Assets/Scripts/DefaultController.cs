@@ -39,6 +39,7 @@ public class DefaultController : MonoBehaviour
     bool attack = false;
     bool power = false;
 
+
     Animator anim;
     Rigidbody2D body;
 
@@ -47,6 +48,8 @@ public class DefaultController : MonoBehaviour
     //max speed, jump duration?, attack rate?
     //Vector3 movement
     //bool for states
+
+    public AudioClip attackSound;
 
     Direction direct = Direction.right;
 
