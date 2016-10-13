@@ -64,6 +64,7 @@ public class DefaultController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             attack = true;
+            SoundManager.instance.PlaySingle(attackSound);
         }
         else
         {
