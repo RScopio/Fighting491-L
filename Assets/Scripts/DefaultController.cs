@@ -38,6 +38,7 @@ public class DefaultController : MonoBehaviour
     bool onGround = false;
     bool attack = false;
     bool power = false;
+    bool block = false;
 
 
     Animator anim;
@@ -78,6 +79,15 @@ public class DefaultController : MonoBehaviour
         else
         {
             power = false;
+        }
+
+        if(Input.GetKey(KeyCode.C))
+        {
+            block = true;
+        }
+        else
+        {
+            block = false;
         }
     }
 
@@ -148,7 +158,7 @@ public class DefaultController : MonoBehaviour
         }
 
 
-        if (!crouch && !anim.GetCurrentAnimatorStateInfo(0).IsName("punch"))
+        if (!crouch && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
         {
             if (horiz != 0)
             {
@@ -164,6 +174,7 @@ public class DefaultController : MonoBehaviour
         anim.SetBool("Ground", onGround);
         anim.SetBool("Attack", attack);
         anim.SetBool("Power", power);
+        anim.SetBool("Block", block);
         anim.SetFloat("Speed", Mathf.Abs(horiz));
     }
 
