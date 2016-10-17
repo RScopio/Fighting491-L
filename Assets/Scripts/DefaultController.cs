@@ -35,9 +35,10 @@ public class DefaultController : MonoBehaviour
     public float Speed = 1;
     public float JumpForce = 3;
     bool crouch = false;
-	bool onGround = false;
+    bool onGround = false;
     bool attack = false;
     bool power = false;
+    bool block = false;
 
 
     Animator anim;
@@ -50,7 +51,7 @@ public class DefaultController : MonoBehaviour
     //bool for states
 
     public AudioClip attackSound;
-
+    public AudioClip jumpSound;
     Direction direct = Direction.right;
 
     void Start()
@@ -64,7 +65,10 @@ public class DefaultController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             attack = true;
-            SoundManager.instance.PlaySingle(attackSound);
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySingle(attackSound);
+            }
         }
         else
         {
@@ -79,6 +83,15 @@ public class DefaultController : MonoBehaviour
         {
             power = false;
         }
+
+        if(Input.GetKey(KeyCode.C))
+        {
+            block = true;
+        }
+        else
+        {
+            block = false;
+        }
     }
 
     void UpdateDirection()
@@ -86,14 +99,11 @@ public class DefaultController : MonoBehaviour
         //if enemy pos < pos::localScale = -1,1,1 else 1,1,1(flip using scale)
         if (direct == Direction.left)
         {
-			
-				transform.localScale = new Vector3(-1, 1, 1);
-			
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (direct == Direction.right)
         {
-			transform.localScale = Vector2.one;
-            
+            transform.localScale = Vector2.one;
         }
     }
 
@@ -148,10 +158,14 @@ public class DefaultController : MonoBehaviour
         if (vert > 0 && onGround)
         {
             body.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySingle(jumpSound);
+            }
         }
 
 
-        if (!crouch && !anim.GetCurrentAnimatorStateInfo(0).IsName("punch"))
+        if (!crouch && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
         {
             if (horiz != 0)
             {
@@ -167,6 +181,7 @@ public class DefaultController : MonoBehaviour
         anim.SetBool("Ground", onGround);
         anim.SetBool("Attack", attack);
         anim.SetBool("Power", power);
+        anim.SetBool("Block", block);
         anim.SetFloat("Speed", Mathf.Abs(horiz));
     }
 
