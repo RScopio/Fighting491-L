@@ -50,7 +50,7 @@ public class DefaultController : MonoBehaviour
     //bool for states
 
     public AudioClip attackSound;
-
+    public AudioClip jumpSound;
     Direction direct = Direction.right;
 
     void Start()
@@ -64,7 +64,10 @@ public class DefaultController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             attack = true;
-            SoundManager.instance.PlaySingle(attackSound);
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySingle(attackSound);
+            }
         }
         else
         {
@@ -148,6 +151,10 @@ public class DefaultController : MonoBehaviour
         if (vert > 0 && onGround)
         {
             body.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySingle(jumpSound);
+            }
         }
 
 
