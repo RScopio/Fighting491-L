@@ -51,6 +51,7 @@ public class DefaultController : MonoBehaviour
     //bool for states
 
     public AudioClip attackSound;
+    //public AudioClip kickSound;
     public AudioClip jumpSound;
     Direction direct = Direction.right;
 
@@ -78,6 +79,10 @@ public class DefaultController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             power = true;
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySingle(attackSound);
+            }
         }
         else
         {
