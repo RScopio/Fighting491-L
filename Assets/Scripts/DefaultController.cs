@@ -112,22 +112,22 @@ public class DefaultController : MonoBehaviour
         xbox_back = Input.GetButton("XboxBack");
         xbox_start = Input.GetButton("XboxStart");
 
-        DebugText.text =
-        string.Format(
-            "Horizontal: {14:0.000} Vertical: {15:0.000}\n" +
-            "HorizontalTurn: {16:0.000} VerticalTurn: {17:0.000}\n" +
-            "LTrigger: {0:0.000} RTrigger: {1:0.000}\n" +
-            "A: {2} B: {3} X: {4} Y:{5}\n" +
-            "LB: {6} RB: {7} LS: {8} RS:{9}\n" +
-            "View: {10} Menu: {11}\n" +
-            "Dpad-H: {12:0.000} Dpad-V: {13:0.000}\n",
-            xbox_ltaxis, xbox_rtaxis,
-            xbox_a, xbox_b, xbox_x, xbox_y,
-            xbox_lb, xbox_rb, xbox_ls, xbox_rs,
-            xbox_back, xbox_start,
-            xbox_dhaxis, xbox_dvaxis,
-            xbox_hAxis, xbox_vAxis,
-            xbox_htAxis, xbox_vtAxis);
+//        DebugText.text =
+//        string.Format(
+//            "Horizontal: {14:0.000} Vertical: {15:0.000}\n" +
+//            "HorizontalTurn: {16:0.000} VerticalTurn: {17:0.000}\n" +
+//            "LTrigger: {0:0.000} RTrigger: {1:0.000}\n" +
+//            "A: {2} B: {3} X: {4} Y:{5}\n" +
+//            "LB: {6} RB: {7} LS: {8} RS:{9}\n" +
+//            "View: {10} Menu: {11}\n" +
+//            "Dpad-H: {12:0.000} Dpad-V: {13:0.000}\n",
+//            xbox_ltaxis, xbox_rtaxis,
+//            xbox_a, xbox_b, xbox_x, xbox_y,
+//            xbox_lb, xbox_rb, xbox_ls, xbox_rs,
+//            xbox_back, xbox_start,
+//            xbox_dhaxis, xbox_dvaxis,
+//            xbox_hAxis, xbox_vAxis,
+//            xbox_htAxis, xbox_vtAxis);
     }
 
     void Attack()
