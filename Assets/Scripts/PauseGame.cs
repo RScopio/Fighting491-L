@@ -6,7 +6,7 @@ public class PauseGame : MonoBehaviour
     public Transform canvas;
 
 
-    void start()
+    void Start()
     {
         canvas.gameObject.SetActive(false);
         Time.timeScale = 1;
