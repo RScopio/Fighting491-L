@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class InputController : MonoBehaviour
 {
+    public string JoyNum = "0";
     public KeyCode AttackKey;
     public KeyCode PowerKey;
     public KeyCode SuperKey;
@@ -130,43 +131,46 @@ public class InputController : MonoBehaviour
 
     void ReadXbox()
     {
-        xbox_hAxis = Input.GetAxis("Horizontal");
-        xbox_vAxis = Input.GetAxis("Vertical");
-        //xbox_aAxis = Input.GetAxis("Altitude");
-        xbox_htAxis = Input.GetAxis("HorizontalTurn");
-        xbox_vtAxis = Input.GetAxis("VerticalTurn");
+        xbox_hAxis = Input.GetAxis("Joy" + JoyNum + "_Horizontal");
+        xbox_vAxis = Input.GetAxis("Joy" + JoyNum + "_Vertical");
+        //xbox_aAxis = Input.GetAxis("Joy"+JoyNum+"_Altitude");
+        xbox_htAxis = Input.GetAxis("Joy" + JoyNum + "_HorizontalTurn");
+        xbox_vtAxis = Input.GetAxis("Joy" + JoyNum + "_VerticalTurn");
 
-        xbox_ltaxis = Input.GetAxis("XboxLeftTrigger");
-        xbox_rtaxis = Input.GetAxis("XboxRightTrigger");
-        xbox_dhaxis = Input.GetAxis("XboxDpadHorizontal");
-        xbox_dvaxis = Input.GetAxis("XboxDpadVertical");
+        xbox_ltaxis = Input.GetAxis("Joy" + JoyNum + "_XboxLeftTrigger");
+        xbox_rtaxis = Input.GetAxis("Joy" + JoyNum + "_XboxRightTrigger");
+        xbox_dhaxis = Input.GetAxis("Joy" + JoyNum + "_XboxDpadHorizontal");
+        xbox_dvaxis = Input.GetAxis("Joy" + JoyNum + "_XboxDpadVertical");
 
-        xbox_a = Input.GetButton("XboxA");
-        xbox_b = Input.GetButton("XboxB");
-        xbox_x = Input.GetButton("XboxX");
-        xbox_y = Input.GetButton("XboxY");
-        xbox_lb = Input.GetButton("XboxLB");
-        xbox_rb = Input.GetButton("XboxRB");
-        xbox_ls = Input.GetButton("XboxLS");
-        xbox_rs = Input.GetButton("XboxRS");
-        xbox_back = Input.GetButton("XboxBack");
-        xbox_start = Input.GetButton("XboxStart");
+        xbox_a = Input.GetButton("Joy" + JoyNum + "_XboxA");
+        xbox_b = Input.GetButton("Joy" + JoyNum + "_XboxB");
+        xbox_x = Input.GetButton("Joy" + JoyNum + "_XboxX");
+        xbox_y = Input.GetButton("Joy" + JoyNum + "_XboxY");
+        xbox_lb = Input.GetButton("Joy" + JoyNum + "_XboxLB");
+        xbox_rb = Input.GetButton("Joy" + JoyNum + "_XboxRB");
+        xbox_ls = Input.GetButton("Joy" + JoyNum + "_XboxLS");
+        xbox_rs = Input.GetButton("Joy" + JoyNum + "_XboxRS");
+        xbox_back = Input.GetButton("Joy" + JoyNum + "_XboxBack");
+        xbox_start = Input.GetButton("Joy" + JoyNum + "_XboxStart");
 
-        DebugText.text =
-        string.Format(
-            "Horizontal: {14:0.000} Vertical: {15:0.000}\n" +
-            "HorizontalTurn: {16:0.000} VerticalTurn: {17:0.000}\n" +
-            "LTrigger: {0:0.000} RTrigger: {1:0.000}\n" +
-            "A: {2} B: {3} X: {4} Y:{5}\n" +
-            "LB: {6} RB: {7} LS: {8} RS:{9}\n" +
-            "View: {10} Menu: {11}\n" +
-            "Dpad-H: {12:0.000} Dpad-V: {13:0.000}\n",
-            xbox_ltaxis, xbox_rtaxis,
-            xbox_a, xbox_b, xbox_x, xbox_y,
-            xbox_lb, xbox_rb, xbox_ls, xbox_rs,
-            xbox_back, xbox_start,
-            xbox_dhaxis, xbox_dvaxis,
-            xbox_hAxis, xbox_vAxis,
-            xbox_htAxis, xbox_vtAxis);
+        if (JoyNum == "1")
+        {
+            DebugText.text =
+            string.Format(
+                "Horizontal: {14:0.000} Vertical: {15:0.000}\n" +
+                "HorizontalTurn: {16:0.000} VerticalTurn: {17:0.000}\n" +
+                "LTrigger: {0:0.000} RTrigger: {1:0.000}\n" +
+                "A: {2} B: {3} X: {4} Y:{5}\n" +
+                "LB: {6} RB: {7} LS: {8} RS:{9}\n" +
+                "View: {10} Menu: {11}\n" +
+                "Dpad-H: {12:0.000} Dpad-V: {13:0.000}\n",
+                xbox_ltaxis, xbox_rtaxis,
+                xbox_a, xbox_b, xbox_x, xbox_y,
+                xbox_lb, xbox_rb, xbox_ls, xbox_rs,
+                xbox_back, xbox_start,
+                xbox_dhaxis, xbox_dvaxis,
+                xbox_hAxis, xbox_vAxis,
+                xbox_htAxis, xbox_vtAxis);
+        }
     }
 }
