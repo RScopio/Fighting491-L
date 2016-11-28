@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Options Menu Scene.unity
   - enabled: 1
     path: Assets/Scenes/TestBattle.unity
+  - enabled: 1
+    path: Assets/Scenes/TiledStage.unity
