@@ -860,6 +860,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!224 &1242445956 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224000011381059386, guid: 8d04bcc03b960b045b32c3f06d97077d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1784157761}
 --- !u!1001 &1427095092
 Prefab:
   m_ObjectHideFlags: 0
@@ -899,6 +904,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013877110482, guid: 9b8a345c8cd5be240b8503ffa56efceb,
+        type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1242445956}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b8a345c8cd5be240b8503ffa56efceb, type: 2}
   m_IsPrefabParent: 0
