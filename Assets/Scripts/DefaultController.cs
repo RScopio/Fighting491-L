@@ -27,7 +27,7 @@ public class DefaultController : MonoBehaviour
     /// Transition from attack <-> power needs fixing
     /// </summary>
 
-    private enum Direction
+    public enum Direction
     {
         left,
         right
@@ -37,6 +37,10 @@ public class DefaultController : MonoBehaviour
     public float JumpForce = 3;
     bool crouch = false;
     bool onGround = false;
+    [HideInInspector]
+    public bool Damaged = false;
+    [HideInInspector]
+    public bool Nullify = false;
 
 
     Animator anim;
@@ -49,7 +53,7 @@ public class DefaultController : MonoBehaviour
     SoundController sound;
 
 
-    Direction direct = Direction.right;
+    public Direction direct = Direction.right;
 
     void Start()
     {
@@ -129,6 +133,7 @@ public class DefaultController : MonoBehaviour
         anim.SetBool("Attack", input.Attack);
         anim.SetBool("Power", input.Power);
         anim.SetBool("Block", input.Block);
+        anim.SetBool("Damage", Damaged);
         anim.SetFloat("Speed", Mathf.Abs(input.Horizontal));
     }
 
@@ -139,6 +144,12 @@ public class DefaultController : MonoBehaviour
         //OnGroundCheck();
         Movement();
         UpdateAnimator();
+
+        Damaged = false;
+        if (input.Block == false)
+        {
+            Nullify = false;
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

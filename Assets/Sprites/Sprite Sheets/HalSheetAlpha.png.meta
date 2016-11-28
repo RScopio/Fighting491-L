@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9bd64c5c8a1345d44b56dda271243ae8
-timeCreated: 1476722542
+timeCreated: 1480324428
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -31,6 +31,17 @@ TextureImporter:
     21300048: aAttack_0
     21300050: aPower_0
     21300052: aBlock_0
+    21300054: cBlock
+    21300056: cPower_0
+    21300058: cPower_1
+    21300060: aPower_1
+    21300062: cPower_2
+    21300064: cPower_3
+    21300066: aBlock
+    21300068: aPower_3
+    21300070: aPower_2
+    21300072: aAttack_1
+    21300074: aAttack_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,7 +67,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -353,11 +364,50 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
+      name: cBlock
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 88
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
       name: cPower_0
       rect:
         serializedVersion: 2
-        x: 211
-        y: 49
+        x: 75
+        y: 56
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cPower_1
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 56
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aPower_0
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 52
         width: 22
         height: 23
       alignment: 0
@@ -366,12 +416,77 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cBlock_0
+      name: aPower_1
       rect:
         serializedVersion: 2
-        x: 244
-        y: 49
+        x: 312
+        y: 52
         width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cPower_2
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 24
+        width: 27
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: cPower_3
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 24
+        width: 29
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aBlock
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 20
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aPower_3
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 20
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: aPower_2
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 20
+        width: 29
         height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -382,9 +497,9 @@ TextureImporter:
       name: aAttack_0
       rect:
         serializedVersion: 2
-        x: 211
-        y: 22
-        width: 22
+        x: 212
+        y: 52
+        width: 24
         height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -392,12 +507,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: aPower_0
+      name: aAttack_1
       rect:
         serializedVersion: 2
         x: 244
-        y: 22
-        width: 22
+        y: 52
+        width: 27
         height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -405,13 +520,13 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: aBlock_0
+      name: aAttack_2
       rect:
         serializedVersion: 2
-        x: 273
-        y: 22
-        width: 22
-        height: 23
+        x: 212
+        y: 20
+        width: 30
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
