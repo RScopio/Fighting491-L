@@ -11,38 +11,40 @@ public class Health : MonoBehaviour
 
     public float CurrentHealth;
     public float MaxHealth;
-    public float RegenRate;
+    public float RegenRateTime;
     public bool DoesRegen = false;
+    private bool isRegenHealth = false;
 
 
     void Start()
     {
-        //CurrentHealth = MaxHealth;
-        CurrentHealth = Random.Range(0, MaxHealth);
-
-
-        if (DoesRegen)
-        {
-            StartCoroutine(RegenHealth());
-        }
-
+        CurrentHealth = MaxHealth;
     }
 
     void Update()
     {
         if (CurrentHealth <= 0)
         {
+            //make explosions or something
             transform.gameObject.SetActive(false);
         }
+
+        if (CurrentHealth != MaxHealth && DoesRegen)
+        {
+            StartCoroutine(RegenHealth());
+        }
+
     }
 
     IEnumerator RegenHealth()
     {
-        while (true)
+        DoesRegen = false;
+        while (CurrentHealth < MaxHealth)
         {
-            CurrentHealth += 0.01f;
-            yield return new WaitForSeconds(RegenRate);
+            CurrentHealth += 1f;
+            yield return new WaitForSeconds(RegenRateTime);
         }
+        DoesRegen = true;
     }
 }
 
