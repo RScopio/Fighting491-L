@@ -111,7 +111,9 @@ public class DefaultController : MonoBehaviour
 
         if (input.Vertical > 0 && onGround)
         {
-            body.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+            Vector2 velocity = body.velocity;
+            velocity.y = Mathf.Sqrt(2f * JumpForce * -Physics2D.gravity.y);
+            body.velocity = velocity;
             sound.Jump();
         }
 
@@ -157,6 +159,7 @@ public class DefaultController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             onGround = true;
+            body.velocity = Vector2.zero;
         }
     }
 
