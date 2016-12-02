@@ -21,3 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/TestBattle.unity
   - enabled: 1
     path: Assets/Scenes/TiledStage.unity
+  - enabled: 1
+    path: Assets/Scenes/Information.unity
