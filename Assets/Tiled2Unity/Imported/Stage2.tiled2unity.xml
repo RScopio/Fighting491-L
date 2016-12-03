@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 10/10/2016 11:57:55 PM-->
+<!--Last exported: 10/17/2016 12:54:44 PM-->
 <Tiled2Unity version="1.0.7.8">
   <AssignMaterial mesh="mesh_0001" material="generic_platformer_tiles" />
   <AssignMaterial mesh="mesh_0002" material="generic_platformer_tiles" />
@@ -30,7 +30,7 @@
       <GameObject name="generic_platformer_tiles" copy="mesh_0003" sortingLayerName="" sortingOrder="2" opacity="1" />
       <GameObject name="Collision">
         <PolygonCollider2D>
-          <Path>192,-319 223,-319 223,-289 192,-289 192,-287 158,-287 158,-320 192,-320</Path>
+          <Path>223,-289 160,-289 160,-319 223,-319</Path>
         </PolygonCollider2D>
       </GameObject>
     </GameObject>
@@ -38,7 +38,7 @@
       <GameObject name="generic_platformer_tiles" copy="mesh_0004" sortingLayerName="" sortingOrder="3" opacity="1" />
       <GameObject name="Collision">
         <PolygonCollider2D>
-          <Path>448,-319 479,-319 479,-289 448,-289 448,-287 414,-287 414,-320 448,-320</Path>
+          <Path>479,-289 416,-289 416,-319 479,-319</Path>
         </PolygonCollider2D>
       </GameObject>
     </GameObject>
@@ -46,7 +46,7 @@
       <GameObject name="generic_platformer_tiles" copy="mesh_0005" sortingLayerName="" sortingOrder="4" opacity="1" />
       <GameObject name="Collision">
         <PolygonCollider2D>
-          <Path>320,-191 351,-191 351,-161 320,-161 320,-159 286,-159 286,-192 320,-192</Path>
+          <Path>288,-191 351,-191 351,-161 288,-161</Path>
         </PolygonCollider2D>
       </GameObject>
     </GameObject>
