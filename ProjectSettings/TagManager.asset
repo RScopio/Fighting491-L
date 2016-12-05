@@ -54,3 +54,6 @@ TagManager:
   - name: Healthbar
     uniqueID: 2244178329
     locked: 0
+  - name: Effects
+    uniqueID: 4243538387
+    locked: 0

@@ -447,6 +447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719ed3c8523899d4993202388f16fffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathAnimation: {fileID: 1000012848114850, guid: c81774e7a1079194c8e515b4b6d8df47,
+    type: 2}
   CurrentHealth: 75
   MaxHealth: 75
   RegenRateTime: 1
