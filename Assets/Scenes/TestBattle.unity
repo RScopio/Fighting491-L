@@ -269,6 +269,12 @@ Prefab:
       propertyPath: JumpForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012673956764, guid: 3ce1195cc273c6648bf160c7328f5499,
+        type: 2}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 1000010323321318, guid: b6f7e77cccf0be74f9aecad566ed16b0,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ce1195cc273c6648bf160c7328f5499, type: 2}
   m_IsPrefabParent: 0
@@ -529,6 +535,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011652055886, guid: 035b52f4f8891fc40b5bd497549048b9,
+        type: 2}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 1000010323321318, guid: b6f7e77cccf0be74f9aecad566ed16b0,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 035b52f4f8891fc40b5bd497549048b9, type: 2}
   m_IsPrefabParent: 0
@@ -659,7 +671,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -681,7 +693,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &702890206
 AudioSource:
   m_ObjectHideFlags: 0
@@ -733,7 +745,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -755,7 +767,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!4 &702890207
 Transform:
   m_ObjectHideFlags: 0

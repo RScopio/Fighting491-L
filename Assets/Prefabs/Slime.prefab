@@ -447,10 +447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719ed3c8523899d4993202388f16fffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOver: {fileID: 1000010323321318, guid: b6f7e77cccf0be74f9aecad566ed16b0, type: 2}
   DeathAnimation: {fileID: 1000012848114850, guid: c81774e7a1079194c8e515b4b6d8df47,
     type: 2}
-  CurrentHealth: 75
-  MaxHealth: 75
+  CurrentHealth: 125
+  MaxHealth: 125
   RegenRateTime: 1
   DoesRegen: 1
 --- !u!114 &114000012006981040

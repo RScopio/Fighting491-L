@@ -8,7 +8,7 @@ using System.Collections;
 /// </summary>
 public class Health : MonoBehaviour
 {
-
+    public GameObject GameOver;
     public GameObject DeathAnimation;
     public float CurrentHealth;
     public float MaxHealth;
@@ -27,6 +27,7 @@ public class Health : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             //make explosions or something
+            Instantiate(GameOver);
             Instantiate(DeathAnimation, transform.position, transform.rotation, null);
             transform.gameObject.SetActive(false);
         }
