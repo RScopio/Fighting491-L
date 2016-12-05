@@ -56,6 +56,33 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Sprite
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 18.389997, y: -42.809998, z: 0}
+        outSlope: {x: 18.389997, y: -42.809998, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 0.613, y: -1.427, z: 0}
+        inSlope: {x: 9.472499, y: -23.392498, z: 0}
+        outSlope: {x: 9.472499, y: -23.392498, z: 0}
+        tangentMode: 0
+      - time: 0.1
+        value: {x: 0.65, y: -1.692, z: 0}
+        inSlope: {x: 0.09250003, y: -0.6625, z: 0}
+        outSlope: {x: 0.09250003, y: -0.6625, z: 0}
+        tangentMode: 0
+      - time: 0.2
+        value: {x: 0.613, y: -1.427, z: 0}
+        inSlope: {x: -0.37, y: 2.6499999, z: 0}
+        outSlope: {x: -0.37, y: 2.6499999, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Damage Colliders/Power
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -69,7 +96,64 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Sprite
-  m_FloatCurves: []
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 7.875005, y: 0, z: 0}
+        outSlope: {x: 7.875005, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1.2625002, y: 1, z: 1}
+        inSlope: {x: 9.500395, y: 2.3437483, z: 0}
+        outSlope: {x: 9.500395, y: 2.3437483, z: 0}
+        tangentMode: 0
+      - time: 0.1
+        value: {x: 2.004219, y: 1.3124998, z: 1}
+        inSlope: {x: 1.8542976, y: 0.7812495, z: 0}
+        outSlope: {x: 1.8542976, y: 0.7812495, z: 0}
+        tangentMode: 0
+      - time: 0.2
+        value: {x: 1.2625002, y: 1, z: 1}
+        inSlope: {x: -7.4171886, y: -3.1249976, z: 0}
+        outSlope: {x: -7.4171886, y: -3.1249976, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Damage Colliders/Power
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.033333335
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.23333333
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.25
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Damage Colliders/Power
+    classID: 1
+    script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
@@ -101,6 +185,24 @@ AnimationClip:
       attribute: 1
       script: {fileID: 0}
       classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1162253861
+      attribute: 1
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1162253861
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 1162253861
+      attribute: 2086281974
+      script: {fileID: 0}
+      classID: 1
       customType: 0
       isPPtrCurve: 0
     - path: 850496168
@@ -302,6 +404,216 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
     path: Sprite
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.033333335
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.23333333
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 0.25
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Damage Colliders/Power
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 18.389997
+        outSlope: 18.389997
+        tangentMode: 10
+      - time: 0.033333335
+        value: 0.613
+        inSlope: 9.472499
+        outSlope: 9.472499
+        tangentMode: 10
+      - time: 0.1
+        value: 0.65
+        inSlope: 0.09250003
+        outSlope: 0.09250003
+        tangentMode: 10
+      - time: 0.2
+        value: 0.613
+        inSlope: -0.37
+        outSlope: -0.37
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: Damage Colliders/Power
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: -42.809998
+        outSlope: -42.809998
+        tangentMode: 10
+      - time: 0.033333335
+        value: -1.427
+        inSlope: -23.392498
+        outSlope: -23.392498
+        tangentMode: 10
+      - time: 0.1
+        value: -1.692
+        inSlope: -0.6625
+        outSlope: -0.6625
+        tangentMode: 10
+      - time: 0.2
+        value: -1.427
+        inSlope: 2.6499999
+        outSlope: 2.6499999
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: Damage Colliders/Power
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.033333335
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.2
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: Damage Colliders/Power
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 7.875005
+        outSlope: 7.875005
+        tangentMode: 10
+      - time: 0.033333335
+        value: 1.2625002
+        inSlope: 9.500395
+        outSlope: 9.500395
+        tangentMode: 10
+      - time: 0.1
+        value: 2.004219
+        inSlope: 1.8542976
+        outSlope: 1.8542976
+        tangentMode: 10
+      - time: 0.2
+        value: 1.2625002
+        inSlope: -7.4171886
+        outSlope: -7.4171886
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: Damage Colliders/Power
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.033333335
+        value: 1
+        inSlope: 2.3437483
+        outSlope: 2.3437483
+        tangentMode: 10
+      - time: 0.1
+        value: 1.3124998
+        inSlope: 0.7812495
+        outSlope: 0.7812495
+        tangentMode: 10
+      - time: 0.2
+        value: 1
+        inSlope: -3.1249976
+        outSlope: -3.1249976
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: Damage Colliders/Power
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.033333335
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.2
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: Damage Colliders/Power
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []

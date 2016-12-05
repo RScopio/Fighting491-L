@@ -563,21 +563,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011652055886, guid: 035b52f4f8891fc40b5bd497549048b9,
-        type: 2}
-      propertyPath: RegenRateTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011652055886, guid: 035b52f4f8891fc40b5bd497549048b9,
-        type: 2}
-      propertyPath: DoesRegen
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011043842574, guid: 035b52f4f8891fc40b5bd497549048b9,
-        type: 2}
-      propertyPath: JumpForce
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 035b52f4f8891fc40b5bd497549048b9, type: 2}
   m_IsPrefabParent: 0

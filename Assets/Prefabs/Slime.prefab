@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  JumpForce: 3
+  JumpForce: 5
   Damaged: 0
   Nullify: 0
   direct: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26e2c5500b74eb4f82864159a120502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageValue: 10
+  DamageValue: 15
 --- !u!114 &114000011652055886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 75
   MaxHealth: 75
-  RegenRateTime: 0
+  RegenRateTime: 1
   DoesRegen: 1
 --- !u!114 &114000012006981040
 MonoBehaviour:
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26e2c5500b74eb4f82864159a120502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageValue: 20
+  DamageValue: 30
 --- !u!114 &114000013532408898
 MonoBehaviour:
   m_ObjectHideFlags: 1
