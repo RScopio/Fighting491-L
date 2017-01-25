@@ -286,6 +286,11 @@ Prefab:
       propertyPath: characterBackgroundPortait
       value: 
       objectReference: {fileID: 815553130}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterSelectionSprite
+      value: 
+      objectReference: {fileID: 1163954906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -665,6 +670,11 @@ Prefab:
       propertyPath: characterBackgroundPortait
       value: 
       objectReference: {fileID: 815553130}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterSelectionSprite
+      value: 
+      objectReference: {fileID: 1163954906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -785,6 +795,11 @@ Prefab:
       propertyPath: characterBackgroundPortait
       value: 
       objectReference: {fileID: 815553130}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterSelectionSprite
+      value: 
+      objectReference: {fileID: 1163954906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -867,7 +882,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 895638998}
         m_MethodName: TransitionToFightingScene
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -922,7 +937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388df48f5edde44e2858d69b2d6c5aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 1
 --- !u!1 &913520670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1177,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1952752336}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterSelectionSprite
+      value: 
+      objectReference: {fileID: 1163954906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -1562,6 +1581,11 @@ Prefab:
       propertyPath: characterBackgroundPortait
       value: 
       objectReference: {fileID: 815553130}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterSelectionSprite
+      value: 
+      objectReference: {fileID: 1163954906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -1727,6 +1751,11 @@ Prefab:
       propertyPath: characterBackgroundPortait
       value: 
       objectReference: {fileID: 815553130}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterSelectionSprite
+      value: 
+      objectReference: {fileID: 1163954906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -1848,6 +1877,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 74010d2bbdabc4b1a9f5c12986f88d27,
         type: 3}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterSelectionSprite
+      value: 
+      objectReference: {fileID: 1163954906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -2217,6 +2251,11 @@ Prefab:
       propertyPath: characterBackgroundPortait
       value: 
       objectReference: {fileID: 815553130}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterSelectionSprite
+      value: 
+      objectReference: {fileID: 1163954906}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0

@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/CharacterSelectScene.unity
   - enabled: 0
     path: Assets/Scenes/testcharacterselectScene.unity
   - enabled: 0
     path: Assets/Scenes/TITLE SCREEN V2.unity
-  - enabled: 1
-    path: Assets/Scenes/MAIN MENU V1.unity
   - enabled: 0
     path: Assets/Scenes/Options Menu PlaceHolder Scene.unity
+  - enabled: 1
+    path: Assets/Scenes/MAIN MENU V1.unity
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelectScene.unity
   - enabled: 1
     path: Assets/Scenes/Options Menu Scene.unity
   - enabled: 1

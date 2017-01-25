@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour {
 
 	public static Dictionary<string,string> characters  = new Dictionary<string,string>()
 	{
-		{"bob-lob"  , "fighterselect_0"},
-		{"ehonda" , "fighterselect_1"},
+		{"SlimeSpriteFinal"  , "fighterselect_0"},
+		{"HalAlpha" , "fighterselect_1"},
 		{"blanka" , "fighterselect_2"},
 		{"guile" , "fighterselect_3"},
 		{"ken" , "fighterselect_4"},
