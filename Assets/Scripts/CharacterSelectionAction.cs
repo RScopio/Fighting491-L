@@ -35,7 +35,13 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 
 				Sprite tempSprite = Resources.Load<Sprite> ("Textures/streetfighterlargePortraits/" + name.Key);
 				characterBackgroundPortait.GetComponent<Image>().sprite = tempSprite;
-				//characterSelectionSprite.GetComponent<Image> ().sprite;
+
+				var tempSpriteArray = Resources.LoadAll<Sprite> ("Textures/Sprites/Sprite Sheets/SlimeSpriteFinal_48" );
+
+				//characterSelectionSprite.GetComponent<Image> ().sprite = tempSpriteArray[System.Array.IndexOf(tempSpriteArray, "idle_0")];
+
+
+				Debug.Log (tempSpriteArray.Length);
 
 				break;
 			}

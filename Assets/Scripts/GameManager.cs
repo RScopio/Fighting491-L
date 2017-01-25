@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -12,8 +13,8 @@ public class GameManager : MonoBehaviour {
 
 	public static Dictionary<string,string> characters  = new Dictionary<string,string>()
 	{
-		{"ryu"  , "fighterselect_0"},
-		{"ehonda" , "fighterselect_1"},
+		{"SlimeSpriteFinal"  , "fighterselect_0"},
+		{"HalAlpha" , "fighterselect_1"},
 		{"blanka" , "fighterselect_2"},
 		{"guile" , "fighterselect_3"},
 		{"ken" , "fighterselect_4"},
@@ -22,7 +23,12 @@ public class GameManager : MonoBehaviour {
 		{"dhalsim" , "fighterselect_7"}
 	};
 
+	public static Dictionary<string,int> scenes  = new Dictionary<string,int>(){
 
+		{"mainMenu",0},{"characterSelectScene",1},{"optionsMenu",2},
+		{"battle",3},{"pauseMenu",4},{"information",5}
+		
+	};
 
 
 
@@ -46,7 +52,6 @@ public class GameManager : MonoBehaviour {
 
 		DontDestroyOnLoad (transform.gameObject);
 		_sharedInstance = this;
-
 	
 
 
@@ -62,6 +67,17 @@ public class GameManager : MonoBehaviour {
 	
 	}
 
+	public void TransitionToScene(string sceneName){
 
 
-}
+		foreach (KeyValuePair<string,int> name in scenes) {
+		
+			if (sceneName == name.Key)
+				SceneManager.LoadScene (name.Value);
+		
+		}
+		
+
+	}
+
+}//end of class
