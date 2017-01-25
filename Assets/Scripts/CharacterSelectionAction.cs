@@ -12,7 +12,13 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 	public EventSystem eventsystem;
 	public GameObject characterBackgroundPortait;
 	public GameObject characterSelectionSprite;
+	public Animator spriteAnimator;
+
+
+
 	public void start(){
+
+
 		
 	}
 	public void update(){
@@ -36,12 +42,11 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 				Sprite tempSprite = Resources.Load<Sprite> ("Textures/streetfighterlargePortraits/" + name.Key);
 				characterBackgroundPortait.GetComponent<Image>().sprite = tempSprite;
 
-				var tempSpriteArray = Resources.LoadAll<Sprite> ("Textures/Sprites/Sprite Sheets/SlimeSpriteFinal_48" );
+				var spriteStateNumber = int.Parse ((name.Value[name.Value.Length - 1]).ToString ());//converts from char to string to int because Parse can only take strings
+				spriteAnimator.SetInteger ("characterSelectState", spriteStateNumber );
 
-				//characterSelectionSprite.GetComponent<Image> ().sprite = tempSpriteArray[System.Array.IndexOf(tempSpriteArray, "idle_0")];
 
 
-				Debug.Log (tempSpriteArray.Length);
 
 				break;
 			}
