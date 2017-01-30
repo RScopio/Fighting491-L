@@ -122,7 +122,7 @@ public class DefaultController : MonoBehaviour
         {
             if (input.Horizontal != 0)
             {
-                transform.Translate(Vector2.right * Speed * Time.deltaTime);
+                transform.Translate(Vector2.right * input.Horizontal * Speed * Time.deltaTime);
             }
         }
         transform.rotation = Quaternion.Euler(Vector3.zero);
