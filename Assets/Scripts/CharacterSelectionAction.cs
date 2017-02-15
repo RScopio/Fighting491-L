@@ -8,7 +8,7 @@ using System.IO;
 
 public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISelectHandler{
 	public string character;
-	private GameManager gameManager;
+	private CharacterInfo characterInfo;
 	public EventSystem eventsystem;
 	public GameObject characterBackgroundPortait;
 	public GameObject characterSelectionSprite;
@@ -35,7 +35,7 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 	public void OnSelect(BaseEventData eventData){
 		
 
-		foreach (KeyValuePair<string,string> name in GameManager.characters) {
+		foreach (KeyValuePair<string,string> name in CharacterInfo.characters) {
 			
 			if (gameObject.GetComponent<Image>().sprite.name == name.Value) {
 
@@ -55,15 +55,15 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 	}
 
 	public void SelectedCharacter(){
-		
 
-		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager>();
+
+        characterInfo = GameObject.Find ("GameController").GetComponent<CharacterInfo>();
 		character = gameObject.GetComponent<Image> ().sprite.name;
 		var colors = this.GetComponent<Button> ().colors;
 		colors.normalColor = Color.gray;
 		colors.highlightedColor = Color.gray;
 		GetComponent<Button> ().colors = colors;
 
-		gameManager.character = character;
+        characterInfo.character = character;
 	}
 }

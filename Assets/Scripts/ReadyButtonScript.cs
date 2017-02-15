@@ -4,12 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class ReadyButtonScript : MonoBehaviour {
 	
-	private GameManager gameManager;
+	private SceneInfo sceneInfo;
 
 
 	public void TransitionToFightingScene(){
-		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager>();
-		gameManager.TransitionToScene ("battle");
+        sceneInfo = GameObject.Find ("GameController").GetComponent<SceneInfo>();
+        sceneInfo.TransitionToScene ("battle");
 
 	}
 }
