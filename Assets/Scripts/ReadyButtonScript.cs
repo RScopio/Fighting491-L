@@ -9,7 +9,7 @@ public class ReadyButtonScript : MonoBehaviour {
 
 	public void TransitionToFightingScene(){
         sceneInfo = GameObject.Find ("GameController").GetComponent<SceneInfo>();
-        sceneInfo.TransitionToScene ("battle");
+        sceneInfo.TransitionToScene ("Stageselect");
 
 	}
 }
