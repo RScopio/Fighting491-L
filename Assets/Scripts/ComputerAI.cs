@@ -96,16 +96,16 @@ public class ComputerAI : MonoBehaviour
 	{
 		Distance = (Vector2.Distance (Player.position, Computer.position));
 
-		if (Computer.position.magnitude > Player.position.magnitude && Distance > 4.2) {
+		if (Computer.position.magnitude > Player.position.magnitude && Distance > 4.3) {
 			input.Horizontal = -1;
 			direct = Direction.left;
 		} else if (Computer.position.magnitude > Player.position.magnitude && Distance < 3.8) {
 			input.Horizontal = 1;
 			direct = Direction.right;
-		} else if (Computer.position.magnitude < Player.position.magnitude && Distance > 4.2) {
+		} else if (Computer.position.magnitude < Player.position.magnitude && Distance > 4.3) {
 			input.Horizontal = 1;
 			direct = Direction.right;
-		} else if (Computer.position.magnitude > Player.position.magnitude && Distance < 3.8) {
+		} else if (Computer.position.magnitude < Player.position.magnitude && Distance < 3.8) {
 			input.Horizontal = -1;
 			direct = Direction.left;
 		}
