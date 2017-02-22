@@ -57,7 +57,7 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 	public void SelectedCharacter(){
 
 
-        characterInfo = GameObject.Find ("GameController").GetComponent<CharacterInfo>();
+        characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
 		character = gameObject.GetComponent<Image> ().sprite.name;
 		var colors = this.GetComponent<Button> ().colors;
 		colors.normalColor = Color.gray;
