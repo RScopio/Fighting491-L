@@ -14,21 +14,7 @@ public class CharacterSelectionAction : MonoBehaviour,IPointerEnterHandler, ISel
 	public GameObject characterSelectionSprite;
 	public Animator spriteAnimator;
 
-
-
-	public void start(){
-
-
-		
-	}
-	public void update(){
-		
-	}
-
 	public void OnPointerEnter(PointerEventData eventData){
-
-
-			
 
 	}
 
