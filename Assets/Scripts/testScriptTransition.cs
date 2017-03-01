@@ -10,19 +10,19 @@ public class testScriptTransition : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log(GameObject.Find("GameController").GetComponent<CharacterInfo>().character);
-        characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
-        int i = 0;
-        foreach (KeyValuePair<string, string> name in CharacterInfo.characters)
-        {
+        //Debug.Log(GameObject.Find("GameController").GetComponent<CharacterInfo>().character);
+        //characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
+        //int i = 0;
+        //foreach (KeyValuePair<string, string> name in CharacterInfo.characters)
+        //{
 
-            if (characterInfo.character == name.Value)
-            {
+        //    if (characterInfo.character == name.Value)
+        //    {
 
-                Sprite[] temp = Resources.LoadAll<Sprite>("Textures/fighterselect");
-                gameObject.GetComponent<Image>().sprite = temp[i]; ;
-            }
-            i++;
-        }
+        //        Sprite[] temp = Resources.LoadAll<Sprite>("Textures/fighterselect");
+        //        gameObject.GetComponent<Image>().sprite = temp[i]; ;
+        //    }
+        //    i++;
+        //}
     }
 }

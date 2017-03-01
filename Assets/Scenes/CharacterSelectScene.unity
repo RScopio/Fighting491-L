@@ -296,6 +296,16 @@ Prefab:
       propertyPath: spriteAnimator
       value: 
       objectReference: {fileID: 1163954910}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: character
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: characterIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -1950,6 +1960,16 @@ Prefab:
     - target: {fileID: 224000012935264100, guid: d7d94604d1b95471099a17e826607743,
         type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012935264100, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013214348208, guid: d7d94604d1b95471099a17e826607743,
+        type: 2}
+      propertyPath: character
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
