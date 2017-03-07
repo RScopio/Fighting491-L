@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CharacterInfo : MonoBehaviour
 {
-    //key = spritesheet name
-    //value = tag/name/identifier
+    //possibly don't need dictionary
+    //key = tag/name/identifier
+    //value = spritesheet name
     public static Dictionary<string, string> characters = new Dictionary<string, string>()
     {
-        {"SlimeSpriteFinal"  , "slime"},
-        {"HalAlpha" , "hal"}
+        {"slime"  , "SlimeSpriteFinal"},
+        {"hal" , "HalAlpha"}
     };
 
     //    {"blanka" , "fighterselect_2"},
@@ -21,9 +22,16 @@ public class CharacterInfo : MonoBehaviour
     //};
 
     private string _character;
-    public string character
+    public string Character
     {
         get { return _character; }
         set { _character = value; }
+    }
+
+    private string _otherCharacter;
+    public string OtherCharacter
+    {
+        get { return _otherCharacter; }
+        set { _otherCharacter = value; }
     }
 }
