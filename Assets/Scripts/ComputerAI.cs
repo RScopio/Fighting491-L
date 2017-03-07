@@ -44,7 +44,8 @@ public class ComputerAI : MonoBehaviour
 	[HideInInspector]
 	public bool Nullify = false;
 	private float Distance;
-
+	float attackTimer;
+	float attackCooldown = 3.0f;
 
 	Animator anim;
 	Rigidbody2D body;
@@ -94,20 +95,20 @@ public class ComputerAI : MonoBehaviour
 
 	void Movement()
 	{
-		Distance = (Vector2.Distance (Player.position, Computer.position));
+		Distance = Mathf.Abs(Vector3.Distance(Player.position, Computer.position));
 
-		if (Computer.position.magnitude > Player.position.magnitude && Distance > 4.3) {
+		if (Computer.position.x > Player.position.x && Distance > 4.3) {
 			input.Horizontal = -1;
 			direct = Direction.left;
-		} else if (Computer.position.magnitude > Player.position.magnitude && Distance < 3.8) {
+//		} else if (Computer.position.x > Player.position.x && Distance < 3.8) {
+//			input.Horizontal = 1;
+//			direct = Direction.right;
+		} else if (Computer.position.x < Player.position.x && Distance > 4.3) {
 			input.Horizontal = 1;
 			direct = Direction.right;
-		} else if (Computer.position.magnitude < Player.position.magnitude && Distance > 4.3) {
-			input.Horizontal = 1;
-			direct = Direction.right;
-		} else if (Computer.position.magnitude < Player.position.magnitude && Distance < 3.8) {
-			input.Horizontal = -1;
-			direct = Direction.left;
+//		} else if (Computer.position.x < Player.position.x && Distance < 3.8) {
+//			input.Horizontal = -1;
+//			direct = Direction.left;
 		}
 
 		if (!crouch && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
@@ -136,7 +137,6 @@ public class ComputerAI : MonoBehaviour
 	{
 		AttackSounds();
 		OrientDirection();
-		//OnGroundCheck();
 		Movement();
 		UpdateAnimator();
 
@@ -154,6 +154,15 @@ public class ComputerAI : MonoBehaviour
 			onGround = true;
 			body.velocity = Vector2.zero;
 		}
+
+		// If attack collider is player and we're not attacking
+		if (collision.gameObject.tag == "Player" && input.Attack == false) {
+			Debug.Log ("Attacking!");
+			input.Attack = true;
+			attackTimer = attackCooldown;
+		}
+
+		StartCoroutine(AttackCheck());
 	}
 
 	public void OnCollisionExit2D(Collision2D collision)
@@ -164,18 +173,20 @@ public class ComputerAI : MonoBehaviour
 		}
 	}
 
-//	public void OnCollisionAttack2D(Collision2D collision)
-//	{
-//		if (collision.gameObject.tag == "Player")
-//		{
-//			StartCoroutine("AIAttack");
-//		}
-//	}
-//
-//	IEnumerator AIAttack(){
-//		// Wait for 2 seconds before attacking
-//		yield return new WaitForSeconds(2);
-//		input.Attack = true;
-//	}
+	IEnumerator AttackCheck() {
+		while (true) {
+			if (input.Attack) {
+				if (attackTimer > 1.0f) {
+					Debug.Log ("Decreasing");
+					attackTimer -= 1.0f;
+				}
 
+				if (attackTimer <= 1.0f) {
+					input.Attack = false;
+					Debug.Log ("Done attacking!");
+				} 
+			}
+			yield return new WaitForSeconds (1);
+		}
+	}
 }
