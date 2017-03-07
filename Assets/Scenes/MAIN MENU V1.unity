@@ -507,7 +507,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Campaign (Incomplete)
+  m_Text: (X) Campaign
 --- !u!222 &557696566
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1322,7 +1322,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stats/Acheivements
+  m_Text: (X) Stats/Acheivements
 --- !u!222 &1162112885
 CanvasRenderer:
   m_ObjectHideFlags: 0

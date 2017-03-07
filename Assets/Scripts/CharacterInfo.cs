@@ -5,12 +5,12 @@ using UnityEngine;
 public class CharacterInfo : MonoBehaviour
 {
     //possibly don't need dictionary
-    //key = tag/name/identifier
-    //value = spritesheet name
-    public static Dictionary<string, string> characters = new Dictionary<string, string>()
+    //key = tag
+    //value = prefab name
+    public static Dictionary<string, int> characters = new Dictionary<string, int>()
     {
-        {"slime"  , "SlimeSpriteFinal"},
-        {"hal" , "HalAlpha"}
+        {"slime"  , 0},
+        {"hal" , 1},
     };
 
     //    {"blanka" , "fighterselect_2"},

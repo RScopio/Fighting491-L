@@ -8,6 +8,8 @@ TagManager:
   - DebugText
   - ShowOnPause
   - Block
+  - hal
+  - slime
   layers:
   - Default
   - TransparentFX

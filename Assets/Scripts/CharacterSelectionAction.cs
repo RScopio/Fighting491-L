@@ -8,7 +8,7 @@ using System.IO;
 
 public class CharacterSelectionAction : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
-    public int characterIndex;
+
     public Animator spriteAnimator;
 
     private CharacterInfo characterInfo;
@@ -20,15 +20,15 @@ public class CharacterSelectionAction : MonoBehaviour, IPointerEnterHandler, ISe
 
     public void OnSelect(BaseEventData eventData)
     {
-
+        characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
+        int characterIndex = CharacterInfo.characters[gameObject.tag];
         spriteAnimator.SetInteger("characterSelectState", characterIndex);
-
     }
 
     public void SelectedCharacter()
     {
         characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
-        string character = gameObject.GetComponent<Image>().sprite.name;
+        string character = gameObject.tag;
         characterInfo.Character = character;
     }
 }

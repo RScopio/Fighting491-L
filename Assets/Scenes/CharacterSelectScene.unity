@@ -306,6 +306,10 @@ Prefab:
       propertyPath: characterIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013286810920, guid: d7d94604d1b95471099a17e826607743, type: 2}
+      propertyPath: m_TagString
+      value: hal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
   m_IsPrefabParent: 0
@@ -830,7 +834,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 895638998}
-        m_MethodName: TransitionToFightingScene
+        m_MethodName: TransitionToStageSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1331,7 +1335,7 @@ RectTransform:
   m_GameObject: {fileID: 1163954906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 0.8166796, z: 1}
   m_Children: []
   m_Father: {fileID: 1048147809}
   m_RootOrder: 0
@@ -2060,6 +2064,10 @@ Prefab:
         type: 2}
       propertyPath: character
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013286810920, guid: d7d94604d1b95471099a17e826607743, type: 2}
+      propertyPath: m_TagString
+      value: slime
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d94604d1b95471099a17e826607743, type: 2}
