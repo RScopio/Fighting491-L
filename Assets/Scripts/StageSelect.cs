@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageSelect : MonoBehaviour {
+
     public GameObject[] stageselect;
     public static int stageindex;
     public int speed;
