@@ -21,3 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/StageSelect.unity
   - enabled: 1
     path: Assets/Scenes/MultiplayerSelect.unity
+  - enabled: 1
+    path: Assets/Scenes/Practice Scene.unity
