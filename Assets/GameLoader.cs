@@ -27,17 +27,38 @@ public class GameLoader : MonoBehaviour
                 break;
             }
         }
+        //load stage
+        Component[] stages = GameObject.Find("Stages").GetComponentsInChildren(typeof(Transform), true);
+        foreach(Component stageTransform in stages)
+        {
+            if(stageTransform.gameObject.name == StageInfo.SelectedStage)
+            {
+                stageTransform.gameObject.SetActive(true);
+                break;
+            }
+        }
 
+        //load left player
         player.transform.position = GameObject.Find("SpawnPointLeft").transform.position;
         Instantiate(player);
 
-        //load other player
+        //load right player
+        if (stageInfo.GameMode == StageInfo.GameType.Local)
+        {
+
+        }
 
         //load AI
+        if (stageInfo.GameMode == StageInfo.GameType.AI)
+        {
 
-        //load practice dummy
+        }
 
-        //load level
+        //load practice dummy?
+        if (stageInfo.GameMode == StageInfo.GameType.Training)
+        {
+
+        }
 
     }
 }
