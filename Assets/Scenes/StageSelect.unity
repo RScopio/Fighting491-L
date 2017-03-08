@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 40945859}
   - component: {fileID: 40945858}
   m_Layer: 0
-  m_Name: 5
+  m_Name: Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 145582999}
   - component: {fileID: 145582998}
   m_Layer: 0
-  m_Name: 4
+  m_Name: Town
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 653475007}
   - component: {fileID: 653475006}
   m_Layer: 0
-  m_Name: 0
+  m_Name: Lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 769507416}
   - component: {fileID: 769507418}
   m_Layer: 0
-  m_Name: 8
+  m_Name: StagePreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,7 +434,7 @@ Transform:
   m_LocalPosition: {x: 5.0811944, y: -2.7461662, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1890847419}
+  m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &769507418
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 845282194}
   - component: {fileID: 845282193}
   m_Layer: 0
-  m_Name: 3
+  m_Name: River
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 1096018046}
   - component: {fileID: 1096018045}
   m_Layer: 0
-  m_Name: 2
+  m_Name: Waterfall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 1172375129}
   - component: {fileID: 1172375128}
   m_Layer: 0
-  m_Name: 1
+  m_Name: Villa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -806,7 +806,7 @@ GameObject:
   - component: {fileID: 1617065078}
   - component: {fileID: 1617065077}
   m_Layer: 0
-  m_Name: stage
+  m_Name: StageSelectTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,7 +891,6 @@ Transform:
   - {fileID: 845282194}
   - {fileID: 145582999}
   - {fileID: 40945859}
-  - {fileID: 769507417}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -930,11 +929,9 @@ MonoBehaviour:
   - {fileID: 845282192}
   - {fileID: 145582997}
   - {fileID: 40945857}
-  speed: 300
-  fireRate: 0
-  nextFire: 0
   ispress: 0
-  ispressb: 0
+  IsPressB: 0
+  Speed: 75
 --- !u!212 &2071681783
 SpriteRenderer:
   m_ObjectHideFlags: 0

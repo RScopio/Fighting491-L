@@ -5,6 +5,13 @@ using UnityEngine;
 public class StageInfo : MonoBehaviour
 {
 
+    public static List<string> Stages = new List<string>()
+    {
+        "Lake"//, "Villa", "River", "Waterfall", "Town", "Station"
+    };
+
+    public static string SelectedStage = "Lake";
+
     public enum GameType
     {
         None,
@@ -17,15 +24,8 @@ public class StageInfo : MonoBehaviour
     [HideInInspector]
     public GameType GameMode;
 
-    // Use this for initialization
     void Start()
     {
         GameMode = GameType.None;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
