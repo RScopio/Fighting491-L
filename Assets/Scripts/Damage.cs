@@ -14,11 +14,17 @@ public class Damage : MonoBehaviour
         if (collision.transform.root != transform.root && enemy)
         {
             DefaultController enemyController = enemy.GetComponent<DefaultController>();
-            if (!enemyController.Nullify)
+            if (enemyController && !enemyController.Nullify)
             {
                 enemy.CurrentHealth -= DamageValue;
                 enemyController.Damaged = true;
             }
+						ComputerAI aiController = enemy.GetComponent<ComputerAI>();
+						if (aiController && !aiController.Nullify)
+						{
+              enemy.CurrentHealth -= DamageValue;
+              aiController.Damaged = true;
+						}
         }
     }
 }
