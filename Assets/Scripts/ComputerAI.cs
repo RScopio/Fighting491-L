@@ -157,9 +157,17 @@ public class ComputerAI : MonoBehaviour
 
 		// If attack collider is player and we're not attacking
 		if (collision.gameObject.tag == "Player" && input.Attack == false) {
-			Debug.Log ("Attacking!");
-			input.Attack = true;
-			attackTimer = attackCooldown;
+            //double probability = 0.60;
+
+            //double result = Random.Range(1, 100) / 100;
+
+            //if (result < probability)
+            //{
+
+                Debug.Log("Attacking!");
+                input.Attack = true;
+                attackTimer = attackCooldown;
+            //}
 		}
 
 		StartCoroutine(AttackCheck());
