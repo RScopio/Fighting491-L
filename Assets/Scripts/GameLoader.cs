@@ -45,19 +45,17 @@ public class GameLoader : MonoBehaviour
         //load right player
         if (stageInfo.GameMode == StageInfo.GameType.Local)
         {
-
+            GameObject secondPlayer = Resources.Load("Prefabs/Characters/Slime") as GameObject;
+            secondPlayer.transform.position = GameObject.Find("SpawnPointRight").transform.position;
+            Instantiate(secondPlayer);
         }
 
         //load AI
         if (stageInfo.GameMode == StageInfo.GameType.AI)
         {
-
-        }
-
-        //load practice dummy?
-        if (stageInfo.GameMode == StageInfo.GameType.Training)
-        {
-
+            GameObject ai = Resources.Load("Prefabs/Characters/SlimeAI") as GameObject;
+            ai.transform.position = GameObject.Find("SpawnPointRight").transform.position;
+            Instantiate(ai);
         }
 
     }

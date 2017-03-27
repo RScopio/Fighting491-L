@@ -10,7 +10,7 @@ public class SceneInfo : MonoBehaviour
 
         {"mainMenu",1},{"characterSelectScene",2},{"optionsMenu",3},
         {"battle",5},{"titleScreen",0},{"information",4},
-         {"Stageselect",6}
+         {"Stageselect",6}, {"practiceScene", 8}
     };
 
     public void TransitionToScene(string sceneName)
