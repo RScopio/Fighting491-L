@@ -7,7 +7,7 @@ public class StageInfo : MonoBehaviour
 
     public static List<string> Stages = new List<string>()
     {
-        "Lake"//, "Villa", "River", "Waterfall", "Town", "Station"
+        "Lake", "Villa", "Waterfall", "River", "Town", "Station"
     };
 
     public static string SelectedStage = "Lake";
