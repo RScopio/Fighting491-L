@@ -116,7 +116,7 @@ public class ComputerAI : MonoBehaviour
 
 		int JumpChance = Random.Range (1, 100);
 
-		if (Player.position.y > 2.5) {
+		if (Player.position.y > 1.5) {
 			if (JumpChance < 20) {
 				Debug.Log("Jumping");
 				input.Vertical = 1;
