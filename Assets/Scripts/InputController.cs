@@ -131,6 +131,10 @@ public class InputController : MonoBehaviour
 
     void ReadXbox()
     {
+        if(Input.GetJoystickNames().Length == 0)
+        {
+            return;
+        }
         xbox_hAxis = Input.GetAxis("Joy" + JoyNum + "_Horizontal");
         xbox_vAxis = Input.GetAxis("Joy" + JoyNum + "_Vertical");
         //xbox_aAxis = Input.GetAxis("Joy"+JoyNum+"_Altitude");
