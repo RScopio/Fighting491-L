@@ -61,6 +61,9 @@ public class ComputerAI : MonoBehaviour
 
 	void Start()
 	{
+		Computer = transform;
+		Player = GameObject.FindGameObjectWithTag ("Player").transform;
+
 		body = GetComponent<Rigidbody2D>();
 		anim = GetComponentInChildren<Animator>();
 		input = GetComponent<InputController>();
@@ -111,6 +114,23 @@ public class ComputerAI : MonoBehaviour
 //			direct = Direction.left;
 		}
 
+		int JumpChance = Random.Range (1, 100);
+
+		if (Player.position.y > 2.5) {
+			if (JumpChance < 20) {
+				Debug.Log("Jumping");
+				input.Vertical = 1;
+				if (input.Vertical > 0 && onGround)
+				{
+					Vector2 velocity = body.velocity;
+					velocity.y = Mathf.Sqrt(2f * JumpForce * -Physics2D.gravity.y);
+					body.velocity = velocity;
+					sound.Jump();
+				}
+				input.Vertical = 0;
+			}
+		}
+
 		if (!crouch && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("block"))
 		{
 			if (input.Horizontal != 0)
@@ -118,7 +138,7 @@ public class ComputerAI : MonoBehaviour
 				Computer.Translate(Vector2.right * input.Horizontal * Speed * Time.deltaTime);
 			}
 		}
-
+			
 		Computer.rotation = Quaternion.Euler(Vector3.zero);
 	}
 
@@ -154,20 +174,32 @@ public class ComputerAI : MonoBehaviour
 			onGround = true;
 			body.velocity = Vector2.zero;
 		}
-
-		// If attack collider is player and we're not attacking
-		if (collision.gameObject.tag == "Player" && input.Attack == false) {
-            //double probability = 0.60;
-
-            //double result = Random.Range(1, 100) / 100;
-
-            //if (result < probability)
-            //{
-
-                Debug.Log("Attacking!");
-                input.Attack = true;
-                attackTimer = attackCooldown;
-            //}
+			
+		if (collision.gameObject.tag == "Player" && input.Attack == false && input.Power == false) {
+            Debug.Log("Attacking!");
+			int attackChance = Random.Range (1, 100);
+			if (attackChance <= 50) {
+				int attackSelection = Random.Range (1, 100);
+				if (attackSelection < 40) {
+					input.Attack = true;
+				} else {
+					input.Power = true;
+				}
+				attackTimer = attackCooldown;
+			}
+				
+//			if (attackChance > 50) {
+//				Debug.Log ("Blocking");
+//				input.Horizontal = 0;
+//				input.Attack = false;
+//				input.Power = false;
+//
+//				input.Block = true;
+//				Nullify = true;
+//				StartWait();
+//				input.Block = false;
+//				Nullify = false;
+//			}
 		}
 
 		StartCoroutine(AttackCheck());
@@ -183,7 +215,7 @@ public class ComputerAI : MonoBehaviour
 
 	IEnumerator AttackCheck() {
 		while (true) {
-			if (input.Attack) {
+			if (input.Attack || input.Power) {
 				if (attackTimer > 1.0f) {
 					Debug.Log ("Decreasing");
 					attackTimer -= 1.0f;
@@ -191,10 +223,21 @@ public class ComputerAI : MonoBehaviour
 
 				if (attackTimer <= 1.0f) {
 					input.Attack = false;
+					input.Power = false;
 					Debug.Log ("Done attacking!");
 				} 
 			}
 			yield return new WaitForSeconds (1);
 		}
+	}
+
+	IEnumerator StartWait()
+	{
+		yield return StartCoroutine(Wait());
+	}
+
+	IEnumerator Wait()
+	{
+		yield return new WaitForSeconds (2);   
 	}
 }
