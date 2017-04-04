@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 //This script is lazy coding
 public class HealthBarController : MonoBehaviour {
 
     Health health;
+	//[SyncVar]
     public GameObject FrontHealth;
     float defaultScale;
 

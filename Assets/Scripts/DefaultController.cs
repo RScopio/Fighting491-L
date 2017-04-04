@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(InputController), typeof(SoundController))]
-public class DefaultController : MonoBehaviour
+public class DefaultController : NetworkBehaviour
 {
     /// <summary>
     /// Notes:
@@ -43,61 +44,128 @@ public class DefaultController : MonoBehaviour
     public bool Nullify = false;
 
 
-    Animator anim;
-    Rigidbody2D body;
+    public Animator anim;
+
+    public Rigidbody2D body;
+
     //max speed, jump duration?, attack rate?
     //Vector3 movement
     //bool for states
 
-    InputController input;
-    SoundController sound;
+	public InputController input;
+    public SoundController sound;
 
-
-    public Direction direct = Direction.right;
-
+	[SyncVar(hook = "OnChangedDirection")]
+	public Direction direct;//; = Direction.right;
+	NetworkIdentity playerNetworkID;
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
-        input = GetComponent<InputController>();
-        sound = GetComponent<SoundController>();
+		if (!isLocalPlayer) {
+			return;
+		}
+
+		if (isServer) {
+			playerNetworkID = gameObject.GetComponent<NetworkIdentity> ();
+			playerNetworkID.AssignClientAuthority (connectionToClient);
+		}
+        //body = GetComponent<Rigidbody2D>();
+        //anim = GetComponent<Animator>();
+        //input = GetComponent<InputController>();
+        //sound = GetComponent<SoundController>();
+
     }
 
-    void AttackSounds()
+	void AttackSounds()
+		{
+//			if (input.Attack) {
+//				sound.Attack ();
+//			}
+//
+//			if (input.Power) {
+//				sound.Power ();
+//			}
+		}
+
+	void OrientDirection()
     {
-        if (input.Attack)
-        {
-            sound.Attack();
-        }
-
-        if (input.Power)
-        {
-            sound.Power();
-        }
+		if (direct == Direction.left)
+		{
+			this.transform.localScale = new Vector3(-1, 1, 1);
+		}
+		else if (direct == Direction.right)
+		{
+			this.transform.localScale = Vector3.one;
+		}
     }
 
-    void OrientDirection()
-    {
-        //if enemy pos < pos::localScale = -1,1,1 else 1,1,1(flip using scale)
-        if (direct == Direction.left)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (direct == Direction.right)
-        {
-            transform.localScale = Vector2.one;
-        }
-    }
+
+
+	void OnChangedDirection(Direction direction){
+		direct = direction;
+		OrientDirection ();
+	}
+
+	[Command]
+	public void CmdFlipSprite(Direction direction){
+	
+		//Debug.Log ("direction sent to server is " + direct);
+		if (direction == Direction.left)
+		{
+			transform.localScale = new Vector3(-1, 1, 1);
+		}
+		else if (direction == Direction.right)
+		{
+			transform.localScale = Vector3.one;
+		}
+
+	}
+
+
+	[ClientRpc]
+	void RpcFlipSprite(Direction direction)
+	{
+
+
+		//if enemy pos < pos::localScale = -1,1,1 else 1,1,1(flip using scale)
+		if (direction == Direction.left)
+		{
+			this.transform.localScale = new Vector3(-1, 1, 1);
+		}
+		else if (direction == Direction.right)
+		{
+			this.transform.localScale = Vector3.one;
+		}
+	}
 
     void Movement()
     {
         if (input.Horizontal == 1)
         {
             direct = Direction.right;
+	
+//			if (isServer) {
+//				RpcFlipSprite (direct);
+//
+//			} else {
+			if(isLocalPlayer)
+				CmdFlipSprite (direct);
+//				Debug.Log ("right");
+//			}
+				
         }
         if (input.Horizontal == -1)
         {
+			
             direct = Direction.left;
+			if(isLocalPlayer)
+				CmdFlipSprite (direct);
+//			if (isServer) {
+//				Debug.Log ("this should not be called on client");
+//				RpcFlipSprite (direct);
+//			} else {
+//				Debug.Log ("left");
+		
+				
         }
 
         if (input.Vertical < 0 && onGround)
@@ -114,7 +182,7 @@ public class DefaultController : MonoBehaviour
             Vector2 velocity = body.velocity;
             velocity.y = Mathf.Sqrt(2f * JumpForce * -Physics2D.gravity.y);
             body.velocity = velocity;
-            sound.Jump();
+            //sound.Jump();
         }
 
 
@@ -141,8 +209,10 @@ public class DefaultController : MonoBehaviour
 
     void Update()
     {
+		if (!isLocalPlayer)
+			return;
         AttackSounds();
-        OrientDirection();
+		OrientDirection();
         //OnGroundCheck();
         Movement();
         UpdateAnimator();

@@ -1,78 +1,83 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 /// <summary>
 /// Ryan Scopio
 /// Dictates health of an object
 /// Regenative health an option
 /// </summary>
-public class Health : MonoBehaviour
+/// 
+/// 
+/// edited for networking
+public class Health : NetworkBehaviour
 {
     public GameObject GameOver;
     public GameObject DeathAnimation;
+	[SyncVar(hook = "UpdateHealth")]
     public float CurrentHealth;
     public float MaxHealth;
-    public float RegenRateTime;
-    public bool DoesRegen = false;
-    private bool isRegenHealth = false;
-    public float CH { get; set; }
-    public float MH { get; set; }
-    public float RRT { get; set; }
-    float CHA;
-    float MHA;
-    float RRTA;
+    
 
-    void Start()
-    {
-        CurrentHealth = MaxHealth;
-        CH = CurrentHealth;
-        MH = MaxHealth;
-        RRT = RegenRateTime;
-        CHA = CH;
-        MHA = MH;
-        RRTA = RRT;
-    }
+   
+	[SyncVar]
+	private bool hasZeroHealth;
 
-    void Update()
-    {
-        
-        if (CurrentHealth <= 0)
-        {
-            //make explosions or something
-            Instantiate(GameOver);
-            Instantiate(DeathAnimation, transform.position, transform.rotation, null);
-            transform.gameObject.SetActive(false);
-        }
+    
 
-        if (CurrentHealth != MaxHealth && DoesRegen)
-        {
-            StartCoroutine(RegenHealth());
-        }
-        if (CH != CHA) {
-            CurrentHealth = CH;
-            CHA = CH;
-        }  
-        if (MH != MHA)
-        {
-            MaxHealth = MH;
-            MHA = MH;
-        }    
-        if (RRT != RRTA)
-        {
-            RegenRateTime = RRT;
-            RRTA = RRT;
-        }           
-    }
+  
 
-    IEnumerator RegenHealth()
-    {
-        DoesRegen = false;
-        while (CurrentHealth < MaxHealth)
-        {
-            CurrentHealth += 1f;
-            yield return new WaitForSeconds(RegenRateTime);
-        }
-        DoesRegen = true;
-    }
-}
+	public void UpdateHealth(float health){
+
+		CurrentHealth = health;
+	}
+
+
+	public void takeDamage(float damage){
+		if (!isServer) {
+			return;
+		}
+
+		var newHealth = CurrentHealth - damage;
+		Debug.Log ("new health is " + newHealth);
+		if (newHealth <= 0) {
+			//make explosions or something
+
+			Instantiate (GameOver);
+			Instantiate (DeathAnimation, transform.position, transform.rotation, null);
+			transform.gameObject.SetActive (false);
+
+
+			RpcDeath ();
+		} else {
+			CurrentHealth = newHealth;
+		}
+	
+	
+	}
+
+	[ClientRpc]
+	void RpcDeath(){
+
+		if (isLocalPlayer) {
+			Instantiate (GameOver);
+			Instantiate (DeathAnimation, transform.position, transform.rotation, null);
+			transform.gameObject.SetActive (false);
+			CmdDeath ();
+		} 
+	}
+
+	[Command]
+	void CmdDeath(){
+		
+		if (isLocalPlayer) {
+			Instantiate (GameOver);
+			Instantiate (DeathAnimation, transform.position, transform.rotation, null);
+			transform.gameObject.SetActive (false);
+		}
+	}
+
+
+
+}//health
 

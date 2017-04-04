@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class InputController : MonoBehaviour
 {
-    public string JoyNum = "0";
+    public string JoyNum = "1";
     public KeyCode AttackKey;
     public KeyCode PowerKey;
     public KeyCode SuperKey;
