@@ -27,7 +27,7 @@ public class StageSelectionAction : MonoBehaviour, IPointerEnterHandler, ISelect
 
 	}
 
-	public void SelectedCharacter()
+	public void SelectedStage()
 	{
 		
 		string stage = gameObject.tag;
