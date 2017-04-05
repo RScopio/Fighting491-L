@@ -17,6 +17,8 @@ TagManager:
   - River
   - Town
   - Station
+  - Slime
+  - HAL
   layers:
   - Default
   - TransparentFX

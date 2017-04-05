@@ -16,7 +16,7 @@ public class PracticeLoader : MonoBehaviour {
         Object[] prefabs = Resources.LoadAll("Prefabs/Characters");
         foreach (Object prefab in prefabs)
         {
-            if ((prefab as GameObject).tag == charInfo.Character)
+            if ((prefab as GameObject).name == charInfo.Character)
             {
                 player = prefab as GameObject;
                 break;
