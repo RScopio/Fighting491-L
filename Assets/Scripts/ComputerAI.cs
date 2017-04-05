@@ -127,6 +127,7 @@ public class ComputerAI : MonoBehaviour
 					body.velocity = velocity;
 					sound.Jump();
 				}
+
 				input.Vertical = 0;
 			}
 		}
@@ -178,7 +179,7 @@ public class ComputerAI : MonoBehaviour
 		if (collision.gameObject.tag == "Player" && input.Attack == false && input.Power == false) {
             Debug.Log("Attacking!");
 			int attackChance = Random.Range (1, 100);
-			if (attackChance <= 50) {
+			if (attackChance <= 100) {
 				int attackSelection = Random.Range (1, 100);
 				if (attackSelection < 40) {
 					input.Attack = true;
