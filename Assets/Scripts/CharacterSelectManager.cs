@@ -27,8 +27,8 @@ public class CharacterSelectManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		animator = readyButton.GetComponentInParent<Animator> ();
-		animator.SetBool ("isReady", false);
+		//animator = readyButton.GetComponentInParent<Animator> ();
+		//animator.SetBool ("isReady", false);
 		characterIsSelected = false;
 		eventSystem.SetSelectedGameObject (selectedGameObject);
 	}
@@ -51,7 +51,7 @@ public class CharacterSelectManager : MonoBehaviour {
 
 			eventSystem.SetSelectedGameObject (readyButton);
 
-			animator.SetBool ("isReady", true);
+			//animator.SetBool ("isReady", true);
 		}
 
 
