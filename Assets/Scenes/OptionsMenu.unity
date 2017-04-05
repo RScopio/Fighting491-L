@@ -1361,7 +1361,7 @@ GameObject:
   - component: {fileID: 739008659}
   - component: {fileID: 739008658}
   m_Layer: 5
-  m_Name: Title (Unpressable)
+  m_Name: Title (Static)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1665,19 +1665,21 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 08107c9996ba5481891efbd7ecc488fe, type: 3}
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 4
+    m_MaxSize: 48
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options Menu
+  m_Text: '  Options
+
+'
 --- !u!222 &835525063
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4630,7 +4632,7 @@ GameObject:
   - component: {fileID: 1799105789}
   - component: {fileID: 1799105788}
   m_Layer: 5
-  m_Name: Scene 1 Canvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
