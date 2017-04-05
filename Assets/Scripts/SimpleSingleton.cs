@@ -27,6 +27,6 @@ public class SimpleSingleton : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log("SINGLETON UPDATE");
+       // Debug.Log("SINGLETON UPDATE");
     }
 }

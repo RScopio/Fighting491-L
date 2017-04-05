@@ -11,6 +11,12 @@ TagManager:
   - hal
   - slime
   - AI
+  - Lake
+  - Villa
+  - Waterfall
+  - River
+  - Town
+  - Station
   layers:
   - Default
   - TransparentFX
