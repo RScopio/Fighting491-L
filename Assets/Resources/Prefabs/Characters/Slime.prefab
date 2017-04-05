@@ -21,12 +21,12 @@ GameObject:
   - component: {fileID: 4000011061868322}
   - component: {fileID: 114000013532408898}
   m_Layer: 0
-  m_Name: 
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000011011819650
 GameObject:
   m_ObjectHideFlags: 1
@@ -36,12 +36,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011603041480}
   m_Layer: 0
-  m_Name: 
+  m_Name: Damage Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000011176527628
 GameObject:
   m_ObjectHideFlags: 1
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 61000013008438972}
   - component: {fileID: 114000012498250314}
   m_Layer: 0
-  m_Name: 
+  m_Name: Power
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,12 +69,12 @@ GameObject:
   - component: {fileID: 4000014090689400}
   - component: {fileID: 212000010521356246}
   m_Layer: 0
-  m_Name: 
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000011813492960
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,12 +85,12 @@ GameObject:
   - component: {fileID: 4000012319727048}
   - component: {fileID: 95000013215955964}
   m_Layer: 0
-  m_Name: 
+  m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000012345986142
 GameObject:
   m_ObjectHideFlags: 1
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 61000013405288268}
   - component: {fileID: 114000011254770744}
   m_Layer: 0
-  m_Name: 
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,8 +119,8 @@ GameObject:
   - component: {fileID: 61000010329522854}
   - component: {fileID: 114000012390550342}
   m_Layer: 0
-  m_Name: 
-  m_TagString: Untagged
+  m_Name: Block
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,12 +135,12 @@ GameObject:
   - component: {fileID: 4000012432606346}
   - component: {fileID: 212000012912443994}
   m_Layer: 0
-  m_Name: 
+  m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000012819398546
 GameObject:
   m_ObjectHideFlags: 1
@@ -151,12 +151,12 @@ GameObject:
   - component: {fileID: 4000013394209768}
   - component: {fileID: 212000014066758204}
   m_Layer: 0
-  m_Name: 
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000013863250378
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4000011061868322
 Transform:
   m_ObjectHideFlags: 1
