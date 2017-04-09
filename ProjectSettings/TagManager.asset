@@ -19,6 +19,11 @@ TagManager:
   - Station
   - Slime
   - HAL
+  - Background
+  - RenderStop
+  - LeftWall
+  - RightWall
+  - Roof
   layers:
   - Default
   - TransparentFX

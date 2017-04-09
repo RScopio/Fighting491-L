@@ -9,6 +9,8 @@ public class GameLoader : MonoBehaviour
     StageInfo stageInfo;
     SceneInfo sceneInfo;
 
+    public PlayerZoomCamera cam;
+
     void Start()
     {
         GameObject gameController = GameObject.Find("GameController");
@@ -58,5 +60,7 @@ public class GameLoader : MonoBehaviour
             Instantiate(ai);
         }
 
+
+        cam.Initialize();
     }
 }
