@@ -9,8 +9,8 @@ public class CharacterInfo : MonoBehaviour
     //value = prefab name
     public static Dictionary<string, int> characters = new Dictionary<string, int>()
     {
-        {"slime"  , 0},
-        {"hal" , 1},
+        {"Slime"  , 0},
+        {"HAL" , 1},
     };
 
     //    {"blanka" , "fighterselect_2"},
