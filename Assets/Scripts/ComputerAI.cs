@@ -35,8 +35,8 @@ public class ComputerAI : MonoBehaviour
 
 	public Transform Computer;
 	public Transform Player;
-	public float Speed = 1;
-	public float JumpForce = 3;
+	public float Speed;
+	public float JumpForce;
 	bool crouch = false;
 	bool onGround = false;
 	[HideInInspector]
@@ -46,6 +46,7 @@ public class ComputerAI : MonoBehaviour
 	private float Distance;
 	float attackTimer;
 	float attackCooldown = 3.0f;
+	private InputController PlayerScript;
 
 	Animator anim;
 	Rigidbody2D body;
@@ -61,8 +62,10 @@ public class ComputerAI : MonoBehaviour
 
 	void Start()
 	{
+		StartCoroutine (WaitFunction ());
 		Computer = transform;
 		Player = GameObject.FindGameObjectWithTag ("Player").transform;
+		PlayerScript = GameObject.FindGameObjectWithTag ("Player").GetComponent <InputController> ();
 
 		body = GetComponent<Rigidbody2D>();
 		anim = GetComponentInChildren<Animator>();
@@ -98,26 +101,10 @@ public class ComputerAI : MonoBehaviour
 
 	void Movement()
 	{
-		Distance = Mathf.Abs(Vector3.Distance(Player.position, Computer.position));
-
-		if (Computer.position.x > Player.position.x && Distance > 4.3) {
-			input.Horizontal = -1;
-			direct = Direction.left;
-//		} else if (Computer.position.x > Player.position.x && Distance < 3.8) {
-//			input.Horizontal = 1;
-//			direct = Direction.right;
-		} else if (Computer.position.x < Player.position.x && Distance > 4.3) {
-			input.Horizontal = 1;
-			direct = Direction.right;
-//		} else if (Computer.position.x < Player.position.x && Distance < 3.8) {
-//			input.Horizontal = -1;
-//			direct = Direction.left;
-		}
-
 		int JumpChance = Random.Range (1, 100);
 
-		if (Player.position.y > 1.5) {
-			if (JumpChance < 20) {
+		if (Player.position.y > 1.3) {
+			if (JumpChance < 5) {
 				Debug.Log("Jumping");
 				input.Vertical = 1;
 				if (input.Vertical > 0 && onGround)
@@ -127,7 +114,6 @@ public class ComputerAI : MonoBehaviour
 					body.velocity = velocity;
 					sound.Jump();
 				}
-
 				input.Vertical = 0;
 			}
 		}
@@ -141,6 +127,47 @@ public class ComputerAI : MonoBehaviour
 		}
 			
 		Computer.rotation = Quaternion.Euler(Vector3.zero);
+	}
+
+	void Follow()
+	{
+		Distance = Mathf.Abs(Vector3.Distance(Player.position, Computer.position));
+
+		if (Computer.position.x > Player.position.x && Distance < 10) {
+			input.Horizontal = -1;
+			direct = Direction.left;
+		}
+		else if (Computer.position.x < Player.position.x && Distance < 10) {
+			input.Horizontal = 1;
+			direct = Direction.right;
+		}
+
+		int RandomAttack = Random.Range (0, 100);
+
+		if (Distance < 3.5) {
+			if (RandomAttack < 50)
+				input.Attack = true;
+			else
+				input.Power = true;
+		}
+	}
+
+	void Defend()
+	{
+		int blockChance = Random.Range (1, 100);
+		if ((PlayerScript.Attack == true
+			|| PlayerScript.Power == true) &&
+			blockChance < 50) {
+			Debug.Log ("Blocking");
+			input.Horizontal = 0;
+			input.Attack = false;
+			input.Power = false;
+			input.Block = true;
+			Nullify = true;
+		} else {
+			input.Block = false;
+			Nullify = false;
+		}
 	}
 
 	void UpdateAnimator()
@@ -159,6 +186,8 @@ public class ComputerAI : MonoBehaviour
 		AttackSounds();
 		OrientDirection();
 		Movement();
+		InvokeRepeating ("Follow", 0.0f, 3.0f);
+		InvokeRepeating ("Defend", 0.0f, 3.0f);
 		UpdateAnimator();
 
 		Damaged = false;
@@ -177,33 +206,16 @@ public class ComputerAI : MonoBehaviour
 		}
 			
 		if (collision.gameObject.tag == "Player" && input.Attack == false && input.Power == false) {
-            Debug.Log("Attacking!");
-			int attackChance = Random.Range (1, 100);
-			if (attackChance <= 100) {
-				int attackSelection = Random.Range (1, 100);
-				if (attackSelection < 40) {
-					input.Attack = true;
-				} else {
-					input.Power = true;
-				}
-				attackTimer = attackCooldown;
+			Debug.Log ("Attacking!");
+			int attackSelection = Random.Range (1, 100);
+			if (attackSelection < 50) {
+				input.Attack = true;
+			} else {
+				input.Power = true;
 			}
-				
-//			if (attackChance > 50) {
-//				Debug.Log ("Blocking");
-//				input.Horizontal = 0;
-//				input.Attack = false;
-//				input.Power = false;
-//
-//				input.Block = true;
-//				Nullify = true;
-//				StartWait();
-//				input.Block = false;
-//				Nullify = false;
-//			}
+			attackTimer = attackCooldown;
 		}
-
-		StartCoroutine(AttackCheck());
+		//StartCoroutine(AttackCheck());
 	}
 
 	public void OnCollisionExit2D(Collision2D collision)
@@ -228,17 +240,11 @@ public class ComputerAI : MonoBehaviour
 					Debug.Log ("Done attacking!");
 				} 
 			}
-			yield return new WaitForSeconds (1);
+			yield return new WaitForSeconds(1);
 		}
 	}
 
-	IEnumerator StartWait()
-	{
-		yield return StartCoroutine(Wait());
-	}
-
-	IEnumerator Wait()
-	{
-		yield return new WaitForSeconds (2);   
+	IEnumerator WaitFunction() {
+		yield return new WaitForSeconds (3);
 	}
 }

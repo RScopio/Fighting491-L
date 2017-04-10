@@ -30,5 +30,10 @@ public class CharacterSelectionAction : MonoBehaviour, IPointerEnterHandler, ISe
         characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
         string character = gameObject.tag;
         characterInfo.Character = character;
+
+        //duplicated code from OnSelect, keep both for now
+        characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
+        int characterIndex = CharacterInfo.characters[gameObject.tag];
+        spriteAnimator.SetInteger("characterSelectState", characterIndex);
     }
 }
