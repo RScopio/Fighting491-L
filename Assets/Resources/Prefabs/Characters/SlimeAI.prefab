@@ -504,8 +504,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Computer: {fileID: 4490735698261288}
   Player: {fileID: 0}
-  Speed: 11
-  JumpForce: 8
+  Speed: 6
+  JumpForce: 3
   Damaged: 0
   Nullify: 0
   direct: 0

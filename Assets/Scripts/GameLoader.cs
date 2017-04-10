@@ -11,6 +11,8 @@ public class GameLoader : MonoBehaviour
 
     public PlayerZoomCamera cam;
 
+	string[] AI = { "HALAI", "SlimeAI" };
+
     void Start()
     {
         GameObject gameController = GameObject.Find("GameController");
@@ -55,7 +57,7 @@ public class GameLoader : MonoBehaviour
         //load AI
         if (stageInfo.GameMode == StageInfo.GameType.AI)
         {
-            GameObject ai = Resources.Load("Prefabs/Characters/SlimeAI") as GameObject;
+			GameObject ai = Resources.Load("Prefabs/Characters/" + AI.RandomItem()) as GameObject;
             ai.transform.position = GameObject.Find("SpawnPointRight").transform.position;
             Instantiate(ai);
         }
@@ -63,4 +65,13 @@ public class GameLoader : MonoBehaviour
 
         cam.Initialize();
     }
+}
+
+public static class ArrayExtensions
+{
+	// This is an extension method. RandomItem() will now exist on all arrays.
+	public static T RandomItem<T>(this T[] array)
+	{
+		return array[Random.Range(0, array.Length)];
+	}
 }
