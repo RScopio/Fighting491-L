@@ -9,9 +9,12 @@ public class GameLoader : MonoBehaviour
     StageInfo stageInfo;
     SceneInfo sceneInfo;
 
+    public HealthBarController leftHealth;
+    public HealthBarController rightHealth;
+
     public PlayerZoomCamera cam;
 
-	string[] AI = { "HALAI", "SlimeAI" };
+    string[] AI = { "HALAI", "SlimeAI" };
 
     void Start()
     {
@@ -33,9 +36,9 @@ public class GameLoader : MonoBehaviour
         }
         //load stage
         Component[] stages = GameObject.Find("Stages").GetComponentsInChildren(typeof(Transform), true);
-        foreach(Component stageTransform in stages)
+        foreach (Component stageTransform in stages)
         {
-            if(stageTransform.gameObject.name == StageInfo.SelectedStage)
+            if (stageTransform.gameObject.name == StageInfo.SelectedStage)
             {
                 stageTransform.gameObject.SetActive(true);
                 break;
@@ -44,22 +47,22 @@ public class GameLoader : MonoBehaviour
 
         //load left player
         player.transform.position = GameObject.Find("SpawnPointLeft").transform.position;
-        Instantiate(player);
+        leftHealth.CharacterHealth = Instantiate(player).GetComponent<Health>();
 
         //load right player
         if (stageInfo.GameMode == StageInfo.GameType.Local)
         {
             GameObject secondPlayer = Resources.Load("Prefabs/Characters/Slime") as GameObject;
             secondPlayer.transform.position = GameObject.Find("SpawnPointRight").transform.position;
-            Instantiate(secondPlayer);
+            rightHealth.CharacterHealth = Instantiate(secondPlayer).GetComponent<Health>();
         }
 
         //load AI
         if (stageInfo.GameMode == StageInfo.GameType.AI)
         {
-			GameObject ai = Resources.Load("Prefabs/Characters/" + AI.RandomItem()) as GameObject;
+            GameObject ai = Resources.Load("Prefabs/Characters/" + AI.RandomItem()) as GameObject;
             ai.transform.position = GameObject.Find("SpawnPointRight").transform.position;
-            Instantiate(ai);
+            rightHealth.CharacterHealth = Instantiate(ai).GetComponent<Health>();
         }
 
 
@@ -69,9 +72,9 @@ public class GameLoader : MonoBehaviour
 
 public static class ArrayExtensions
 {
-	// This is an extension method. RandomItem() will now exist on all arrays.
-	public static T RandomItem<T>(this T[] array)
-	{
-		return array[Random.Range(0, array.Length)];
-	}
+    // This is an extension method. RandomItem() will now exist on all arrays.
+    public static T RandomItem<T>(this T[] array)
+    {
+        return array[Random.Range(0, array.Length)];
+    }
 }

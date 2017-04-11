@@ -59,7 +59,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1084363086933672
 GameObject:
   m_ObjectHideFlags: 1
@@ -501,7 +501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145f0ec4e48f7bb4bade95e8ecebce46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FrontHealth: {fileID: 1507759494693294}
+  CharacterHealth: {fileID: 0}
+  HealthImage: {fileID: 0}
 --- !u!114 &114708863082537606
 MonoBehaviour:
   m_ObjectHideFlags: 1

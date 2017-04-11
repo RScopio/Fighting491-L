@@ -2,23 +2,25 @@
 using System.Collections;
 
 //This script is lazy coding
-public class HealthBarController : MonoBehaviour {
-
-    Health health;
-    public GameObject FrontHealth;
+public class HealthBarController : MonoBehaviour
+{
+    [HideInInspector]
+    public Health CharacterHealth;
+    public RectTransform HealthImage;
     float defaultScale;
 
-	// Use this for initialization
-	void Start () {
-        health = transform.root.GetComponent<Health>();
-        defaultScale = FrontHealth.transform.localScale.x;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if(health)
+    void Start()
+    {
+        defaultScale = HealthImage.localScale.x;
+        HealthImage.localScale = new Vector3(1, 1, 1);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (CharacterHealth)
         {
-            FrontHealth.transform.localScale = new Vector3(Mathf.Lerp(0, defaultScale, health.CurrentHealth / health.MaxHealth), FrontHealth.transform.localScale.y, FrontHealth.transform.localScale.z);
+            HealthImage.localScale = new Vector2(Mathf.Lerp(0, defaultScale, CharacterHealth.CurrentHealth / CharacterHealth.MaxHealth), HealthImage.localScale.y);
         }
-	}
+    }
 }
