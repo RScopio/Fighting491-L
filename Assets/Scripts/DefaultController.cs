@@ -52,6 +52,7 @@ public class DefaultController : MonoBehaviour
     InputController input;
     SoundController sound;
 
+    private GameObject headBouncer;
 
     public Direction direct = Direction.right;
 
@@ -61,6 +62,18 @@ public class DefaultController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         input = GetComponent<InputController>();
         sound = GetComponent<SoundController>();
+
+        //to bounce off enemy head if they land on top
+        headBouncer = new GameObject("Head Bouncer");
+        headBouncer.tag = "HeadBouncer";
+        headBouncer.AddComponent<HeadBouncerScript>();
+        headBouncer.AddComponent<BoxCollider2D>();
+        headBouncer.GetComponent<BoxCollider2D>().isTrigger = true;
+        headBouncer.transform.parent = gameObject.transform;
+        headBouncer.transform.position = new Vector3(
+                     transform.position.x,
+                     transform.position.y + 1f,
+                     transform.position.z);
     }
 
     void AttackSounds()
@@ -111,10 +124,7 @@ public class DefaultController : MonoBehaviour
 
         if (input.Vertical > 0 && onGround)
         {
-            Vector2 velocity = body.velocity;
-            velocity.y = Mathf.Sqrt(2f * JumpForce * -Physics2D.gravity.y);
-            body.velocity = velocity;
-            sound.Jump();
+            Jump();
         }
 
 
@@ -126,6 +136,14 @@ public class DefaultController : MonoBehaviour
             }
         }
         transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
+    public void Jump()
+    {
+        Vector2 velocity = body.velocity;
+        velocity.y = Mathf.Sqrt(2f * JumpForce * -Physics2D.gravity.y);
+        body.velocity = velocity;
+        sound.Jump();
     }
 
     void UpdateAnimator()
@@ -160,6 +178,11 @@ public class DefaultController : MonoBehaviour
         {
             onGround = true;
             body.velocity = Vector2.zero;
+        }
+
+        if (collision.gameObject.tag == "HeadBouncer")
+        {
+            Jump();
         }
     }
 
