@@ -25,6 +25,7 @@ TagManager:
   - RightWall
   - Roof
   - Mal
+  - HeadBouncer
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class Block : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
         Transform enemy = collision.transform.root;
-        if (collision.transform.root != transform.root && enemy && enemy.tag == "Player")
+        if (collision.transform.root != transform.root && enemy && (enemy.tag == "Player" || enemy.tag == "AI"))
         {
             controller.Nullify = true;
         }
