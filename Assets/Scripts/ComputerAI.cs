@@ -233,11 +233,6 @@ public class ComputerAI : MonoBehaviour
 			}
 			attackTimer = attackCooldown;
 		}
-
-        if (collision.gameObject.tag == "HeadBouncer")
-        {
-            Jump();
-        }
         //StartCoroutine(AttackCheck());
     }
 

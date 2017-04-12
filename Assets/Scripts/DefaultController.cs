@@ -179,11 +179,6 @@ public class DefaultController : MonoBehaviour
             onGround = true;
             body.velocity = Vector2.zero;
         }
-
-        if (collision.gameObject.tag == "HeadBouncer")
-        {
-            Jump();
-        }
     }
 
     public void OnCollisionExit2D(Collision2D collision)
