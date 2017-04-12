@@ -24,6 +24,7 @@ TagManager:
   - LeftWall
   - RightWall
   - Roof
+  - Mal
   layers:
   - Default
   - TransparentFX
