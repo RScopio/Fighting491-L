@@ -84,7 +84,7 @@ public class InputController : MonoBehaviour
             Power = false;
         }
 
-        if (Input.GetKey(BlockKey) || xbox_rb)
+        if (Input.GetKey(BlockKey) || xbox_b)
         {
             Block = true;
         }
@@ -96,11 +96,11 @@ public class InputController : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetKey(RightKey) || xbox_hAxis > 0)
+        if (Input.GetKey(RightKey) || xbox_hAxis > 0 || xbox_dhaxis > 0)
         {
             Horizontal = 1;
         }
-        else if (Input.GetKey(LeftKey) || xbox_hAxis < 0)
+        else if (Input.GetKey(LeftKey) || xbox_hAxis < 0 || xbox_dhaxis < 0)
         {
             Horizontal = -1;
         }
@@ -109,11 +109,11 @@ public class InputController : MonoBehaviour
             Horizontal = 0;
         }
 
-        if (Input.GetKey(UpKey) || xbox_a || xbox_vAxis > 0)
+        if (Input.GetKey(UpKey) || xbox_a || xbox_vAxis > 0 || xbox_dvaxis > 0)
         {
             Vertical = 1;
         }
-        else if (Input.GetKey(DownKey) || xbox_vAxis < 0)
+        else if (Input.GetKey(DownKey) || xbox_vAxis < 0 || xbox_dvaxis < 0)
         {
             Vertical = -1;
         }

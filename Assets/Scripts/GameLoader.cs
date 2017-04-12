@@ -47,14 +47,18 @@ public class GameLoader : MonoBehaviour
 
         //load left player
         player.transform.position = GameObject.Find("SpawnPointLeft").transform.position;
-        leftHealth.CharacterHealth = Instantiate(player).GetComponent<Health>();
+        GameObject playa = Instantiate(player);
+        leftHealth.CharacterHealth = playa.GetComponent<Health>();
+        playa.GetComponent<InputController>().JoyNum = "1";
 
         //load right player
         if (stageInfo.GameMode == StageInfo.GameType.Local)
         {
             GameObject secondPlayer = Resources.Load("Prefabs/Characters/Slime") as GameObject;
             secondPlayer.transform.position = GameObject.Find("SpawnPointRight").transform.position;
-            rightHealth.CharacterHealth = Instantiate(secondPlayer).GetComponent<Health>();
+            GameObject playa2 = Instantiate(secondPlayer);
+            rightHealth.CharacterHealth = playa2.GetComponent<Health>();
+            playa2.GetComponent<InputController>().JoyNum = "2";
         }
 
         //load AI
