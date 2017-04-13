@@ -9,7 +9,8 @@ using System.IO;
 public class CharacterSelectionAction : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
 
-    public Animator spriteAnimator;
+    //public Animator spriteAnimator;
+    public CharacterPreview spritePreview;
 
     private CharacterInfo characterInfo;
 
@@ -20,20 +21,20 @@ public class CharacterSelectionAction : MonoBehaviour, IPointerEnterHandler, ISe
 
     public void OnSelect(BaseEventData eventData)
     {
-        characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
-        int characterIndex = CharacterInfo.characters[gameObject.tag];
-        spriteAnimator.SetInteger("characterSelectState", characterIndex);
+        //characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
+        //int characterIndex = CharacterInfo.characters[gameObject.tag];
+        //spriteAnimator.SetInteger("characterSelectState", characterIndex);
     }
 
     public void SelectedCharacter()
     {
+        //set selected character
         characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
         string character = gameObject.tag;
         characterInfo.Character = character;
 
-        //duplicated code from OnSelect, keep both for now
-        characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
         int characterIndex = CharacterInfo.characters[gameObject.tag];
-        spriteAnimator.SetInteger("characterSelectState", characterIndex);
+        //spriteAnimator.SetInteger("characterSelectState", characterIndex);
+        spritePreview.ChangePreview(characterIndex);
     }
 }
