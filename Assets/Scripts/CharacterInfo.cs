@@ -12,6 +12,7 @@ public class CharacterInfo : MonoBehaviour
         {"Slime"  , 0},
         {"HAL" , 1},
 		{"Mal" , 2},
+		{"Commision" , 3}
     };
 
     //    {"blanka" , "fighterselect_2"},

@@ -26,6 +26,7 @@ TagManager:
   - Roof
   - Mal
   - HeadBouncer
+  - Commision
   layers:
   - Default
   - TransparentFX
