@@ -25,13 +25,18 @@ public class GameLoader : MonoBehaviour
 
         //this is sloppy but it's late and i'm tired
         GameObject player = Resources.Load("Prefabs/Characters/HAL") as GameObject;
+        GameObject secondPlayer = Resources.Load("Prefabs/Characters/Slime") as GameObject;
         Object[] prefabs = Resources.LoadAll("Prefabs/Characters");
         foreach (Object prefab in prefabs)
         {
             if ((prefab as GameObject).name == charInfo.Character)
             {
                 player = prefab as GameObject;
-                break;
+            }
+
+            if ((prefab as GameObject).name == charInfo.OtherCharacter)
+            {
+                secondPlayer = prefab as GameObject;
             }
         }
         //load stage
@@ -54,7 +59,6 @@ public class GameLoader : MonoBehaviour
         //load right player
         if (stageInfo.GameMode == StageInfo.GameType.Local)
         {
-            GameObject secondPlayer = Resources.Load("Prefabs/Characters/Slime") as GameObject;
             secondPlayer.transform.position = GameObject.Find("SpawnPointRight").transform.position;
             GameObject playa2 = Instantiate(secondPlayer);
             rightHealth.CharacterHealth = playa2.GetComponent<Health>();

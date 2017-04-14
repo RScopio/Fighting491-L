@@ -10,7 +10,17 @@ public class CharacterSelectionAction : MonoBehaviour, IPointerEnterHandler, ISe
 {
 
     //public Animator spriteAnimator;
-    public CharacterPreview spritePreview;
+    public CharacterPreview spritePreviewLeft;
+    public CharacterPreview spritePreviewRight;
+
+    private enum Player
+    {
+        Left,
+        Right
+    }
+
+    private Player currentPlayer = Player.Left;
+
 
     private CharacterInfo characterInfo;
 
@@ -26,15 +36,36 @@ public class CharacterSelectionAction : MonoBehaviour, IPointerEnterHandler, ISe
         //spriteAnimator.SetInteger("characterSelectState", characterIndex);
     }
 
+    public void SetPlayerLeft()
+    {
+        currentPlayer = Player.Left;
+    }
+
+    public void SetPlayerRight()
+    {
+        currentPlayer = Player.Right;
+    }
+
     public void SelectedCharacter()
     {
-        //set selected character
         characterInfo = GameObject.Find("GameController").GetComponent<CharacterInfo>();
         string character = gameObject.tag;
-        characterInfo.Character = character;
-
         int characterIndex = CharacterInfo.characters[gameObject.tag];
-        //spriteAnimator.SetInteger("characterSelectState", characterIndex);
-        spritePreview.ChangePreview(characterIndex);
+        if (currentPlayer == Player.Left)
+        {
+            //set selected character
+            characterInfo.Character = character;
+
+            //change preview
+            spritePreviewLeft.ChangePreview(characterIndex);
+        }
+        else if (currentPlayer == Player.Right)
+        {
+            //set selected character
+            characterInfo.OtherCharacter = character;
+
+            //change preview
+            spritePreviewRight.ChangePreview(characterIndex);
+        }
     }
 }

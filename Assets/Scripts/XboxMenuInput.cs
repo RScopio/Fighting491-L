@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class XboxMenuInput : MonoBehaviour
 {
 
-    public string JoyNum = "1";
+    private string LeftJoyNum = "1";
+    private string RightJoyNum = "2";
 
     //controller input
     float xbox_hAxis;
@@ -44,8 +45,16 @@ public class XboxMenuInput : MonoBehaviour
 
     public Button PlayButton;
     public Button[] Buttons = new Button[6];
-    private int selectedButton;
-    bool allowMovement = false;
+    private int highlightedButtonLeft;
+    private int highlightedButtonRight;
+    bool allowMovementLeft = false;
+    bool allowMovementRight = false;
+
+    private int leftPlayerSelected = -1;
+    private int rightPlayerSelected = -1;
+
+    private Color leftColor = new Color(0, 0, 10);
+    private Color rightColor = new Color(10, 0, 0);
 
 
     // Update is called once per frame
@@ -53,7 +62,7 @@ public class XboxMenuInput : MonoBehaviour
     {
         if (Input.GetJoystickNames().Length != 0)
         {
-            ReadXbox();
+            ReadXbox(LeftJoyNum);
 
             #region Title
             if (CurrentScreen == Screen.Title)
@@ -67,126 +76,211 @@ public class XboxMenuInput : MonoBehaviour
             if (CurrentScreen == Screen.MainMenu)
             {
 
-                if (allowMovement && (xbox_vAxis > 0 || xbox_dvaxis > 0))
+                if (allowMovementLeft && (xbox_vAxis > 0 || xbox_dvaxis > 0))
                 {
                     //up 
-                    allowMovement = false;
-                    selectedButton--;
-                    if (selectedButton < 0)
+                    allowMovementLeft = false;
+                    highlightedButtonLeft--;
+                    if (highlightedButtonLeft < 0)
                     {
-                        selectedButton = Buttons.Length - 1;
+                        highlightedButtonLeft = Buttons.Length - 1;
                     }
                 }
-                else if (allowMovement && (xbox_vAxis < 0 || xbox_dvaxis < 0))
+                else if (allowMovementLeft && (xbox_vAxis < 0 || xbox_dvaxis < 0))
                 {
-                    allowMovement = false;
+                    allowMovementLeft = false;
                     //down
-                    selectedButton++;
-                    if (selectedButton >= Buttons.Length)
+                    highlightedButtonLeft++;
+                    if (highlightedButtonLeft >= Buttons.Length)
                     {
-                        selectedButton = 0;
+                        highlightedButtonLeft = 0;
                     }
                 }
-                else if (!allowMovement && xbox_vAxis == 0 && xbox_dvaxis == 0)
+                else if (!allowMovementLeft && xbox_vAxis == 0 && xbox_dvaxis == 0)
                 {
-                    allowMovement = true;
+                    allowMovementLeft = true;
                 }
 
-                Buttons[selectedButton].Select();
+                Buttons[highlightedButtonLeft].Select();
 
                 if (xbox_a)
                 {
-                    Buttons[selectedButton].onClick.Invoke();
-                }
-            }
-            #endregion
-            #region CharacterSelect
-            if (CurrentScreen == Screen.CharacterSelect)
-            {
-                if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0))
-                {
-                    //right
-                    allowMovement = false;
-                    selectedButton++;
-                    if (selectedButton >= 4)
-                    {
-                        selectedButton = 0;
-                    }
-                }
-                else if (allowMovement && (xbox_hAxis < 0 || xbox_dhaxis < 0))
-                {
-                    //left
-                    allowMovement = false;
-                    selectedButton--;
-                    if (selectedButton < 0)
-                    {
-                        selectedButton = 3;
-                    }
-                }
-                else if (allowMovement && (xbox_vAxis > 0 || xbox_dvaxis > 0))
-                {
-                    //up
-                    selectedButton = 4;
-                }
-                else if (allowMovement && (xbox_vAxis < 0 || xbox_dvaxis < 0))
-                {
-                    //down
-                    selectedButton = 0;
-                }
-                else if (!allowMovement && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
-                {
-                    allowMovement = true;
-                }
-
-
-                Buttons[selectedButton].Select();
-
-                if (xbox_a)
-                {
-                    Buttons[selectedButton].onClick.Invoke();
+                    Buttons[highlightedButtonLeft].onClick.Invoke();
                 }
             }
             #endregion
             #region StageSelect
             if (CurrentScreen == Screen.StageSelect)
             {
-                if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0 || xbox_vAxis < 0 || xbox_dvaxis < 0))
+                if (allowMovementLeft && (xbox_hAxis > 0 || xbox_dhaxis > 0 || xbox_vAxis < 0 || xbox_dvaxis < 0))
                 {
                     //right
-                    allowMovement = false;
-                    selectedButton++;
-                    if (selectedButton >= Buttons.Length)
+                    allowMovementLeft = false;
+                    highlightedButtonLeft++;
+                    if (highlightedButtonLeft >= Buttons.Length)
                     {
-                        selectedButton = 0;
+                        highlightedButtonLeft = 0;
                     }
                 }
-                else if (allowMovement && (xbox_hAxis < 0 || xbox_dhaxis < 0 || xbox_vAxis > 0 || xbox_dvaxis > 0))
+                else if (allowMovementLeft && (xbox_hAxis < 0 || xbox_dhaxis < 0 || xbox_vAxis > 0 || xbox_dvaxis > 0))
                 {
                     //left
-                    allowMovement = false;
-                    selectedButton--;
-                    if (selectedButton < 0)
+                    allowMovementLeft = false;
+                    highlightedButtonLeft--;
+                    if (highlightedButtonLeft < 0)
                     {
-                        selectedButton = Buttons.Length - 1;
+                        highlightedButtonLeft = Buttons.Length - 1;
                     }
                 }
-                else if (!allowMovement && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
+                else if (!allowMovementLeft && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
                 {
-                    allowMovement = true;
+                    allowMovementLeft = true;
                 }
 
-                Buttons[selectedButton].Select();
+                Buttons[highlightedButtonLeft].Select();
 
                 if (xbox_a)
                 {
-                    Buttons[selectedButton].onClick.Invoke();
+                    Buttons[highlightedButtonLeft].onClick.Invoke();
                 }
             }
             #endregion
+
+            CharacterSelectLeft();
+            if (Input.GetJoystickNames().Length == 2 && GameObject.Find("GameController").GetComponent<StageInfo>().GameMode == StageInfo.GameType.Local)
+            {
+                ReadXbox(RightJoyNum);
+                CharacterSelectRight();
+            }
+
         }
     }
 
-    void ReadXbox()
+    void CharacterSelectLeft()
+    {
+        #region CharacterSelect
+        if (CurrentScreen == Screen.CharacterSelect)
+        {
+            Buttons[highlightedButtonLeft].image.color = Color.white;
+            if (allowMovementLeft && (xbox_hAxis > 0 || xbox_dhaxis > 0))
+            {
+                //right
+                allowMovementLeft = false;
+                highlightedButtonLeft++;
+                if (highlightedButtonLeft >= 4)
+                {
+                    highlightedButtonLeft = 0;
+                }
+            }
+            else if (allowMovementLeft && (xbox_hAxis < 0 || xbox_dhaxis < 0))
+            {
+                //left
+                allowMovementLeft = false;
+                highlightedButtonLeft--;
+                if (highlightedButtonLeft < 0)
+                {
+                    highlightedButtonLeft = 3;
+                }
+            }
+            //else if (allowMovementLeft && (xbox_vAxis > 0 || xbox_dvaxis > 0))
+            //{
+            //    //up
+            //    highlightedButtonLeft = 4;
+            //}
+            //else if (allowMovementLeft && (xbox_vAxis < 0 || xbox_dvaxis < 0))
+            //{
+            //    //down
+            //    highlightedButtonLeft = 0;
+            //}
+            else if (!allowMovementLeft && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
+            {
+                allowMovementLeft = true;
+            }
+
+
+            Buttons[highlightedButtonLeft].Select();
+            Buttons[highlightedButtonLeft].image.color = leftColor;
+
+            if (xbox_a)
+            {
+                if (leftPlayerSelected >= 0)
+                {
+                    Buttons[leftPlayerSelected].image.color = Color.white;
+                }
+                CharacterSelectionAction setPlayer = Buttons[highlightedButtonLeft].GetComponent<CharacterSelectionAction>();
+                if (setPlayer) { setPlayer.SetPlayerLeft(); }
+                Buttons[highlightedButtonLeft].onClick.Invoke();
+                leftPlayerSelected = highlightedButtonLeft;
+
+            }
+
+            if (xbox_start)
+            {
+                Buttons[Buttons.Length - 1].onClick.Invoke();
+            }
+
+            if (leftPlayerSelected >= 0)
+            {
+                Buttons[leftPlayerSelected].image.color = leftColor;
+            }
+        }
+        #endregion
+    }
+    void CharacterSelectRight()
+    {
+        #region CharacterSelect
+        if (CurrentScreen == Screen.CharacterSelect)
+        {
+            Buttons[highlightedButtonRight].image.color = Color.white;
+            if (allowMovementRight && (xbox_hAxis > 0 || xbox_dhaxis > 0))
+            {
+                //right
+                allowMovementRight = false;
+                highlightedButtonRight++;
+                if (highlightedButtonRight >= 4)
+                {
+                    highlightedButtonRight = 0;
+                }
+            }
+            else if (allowMovementRight && (xbox_hAxis < 0 || xbox_dhaxis < 0))
+            {
+                //left
+                allowMovementRight = false;
+                highlightedButtonRight--;
+                if (highlightedButtonRight < 0)
+                {
+                    highlightedButtonRight = 3;
+                }
+            }
+            else if (!allowMovementRight && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
+            {
+                allowMovementRight = true;
+            }
+
+
+            Buttons[highlightedButtonRight].Select();
+            Buttons[highlightedButtonRight].image.color = rightColor;
+
+            if (xbox_a)
+            {
+                if (rightPlayerSelected >= 0)
+                {
+                    Buttons[rightPlayerSelected].image.color = Color.white;
+                }
+                Buttons[highlightedButtonRight].GetComponent<CharacterSelectionAction>().SetPlayerRight();
+                Buttons[highlightedButtonRight].onClick.Invoke();
+                rightPlayerSelected = highlightedButtonRight;
+
+            }
+
+            if (rightPlayerSelected >= 0)
+            {
+                Buttons[rightPlayerSelected].image.color = rightColor;
+            }
+        }
+        #endregion
+    }
+    void ReadXbox(string JoyNum)
     {
         if (Input.GetJoystickNames().Length == 0)
         {

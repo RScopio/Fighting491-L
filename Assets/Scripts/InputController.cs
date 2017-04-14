@@ -131,7 +131,7 @@ public class InputController : MonoBehaviour
 
     void ReadXbox()
     {
-        if(Input.GetJoystickNames().Length == 0)
+        if(Input.GetJoystickNames().Length == 0 && JoyNum == "0")
         {
             return;
         }
