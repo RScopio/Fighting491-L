@@ -51,137 +51,139 @@ public class XboxMenuInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ReadXbox();
-
-        #region Title
-        if (CurrentScreen == Screen.Title)
+        if (Input.GetJoystickNames().Length != 0)
         {
-            if (xbox_a)
-            {
-                PlayButton.onClick.Invoke();
-            }
-        }
+            ReadXbox();
 
-        if (CurrentScreen == Screen.MainMenu)
-        {
-
-            if (allowMovement && (xbox_vAxis > 0 || xbox_dvaxis > 0))
+            #region Title
+            if (CurrentScreen == Screen.Title)
             {
-                //up 
-                allowMovement = false;
-                selectedButton--;
-                if (selectedButton < 0)
+                if (xbox_a)
                 {
-                    selectedButton = Buttons.Length - 1;
+                    PlayButton.onClick.Invoke();
                 }
             }
-            else if (allowMovement && (xbox_vAxis < 0 || xbox_dvaxis < 0))
+
+            if (CurrentScreen == Screen.MainMenu)
             {
-                allowMovement = false;
-                //down
-                selectedButton++;
-                if (selectedButton >= Buttons.Length)
+
+                if (allowMovement && (xbox_vAxis > 0 || xbox_dvaxis > 0))
                 {
+                    //up 
+                    allowMovement = false;
+                    selectedButton--;
+                    if (selectedButton < 0)
+                    {
+                        selectedButton = Buttons.Length - 1;
+                    }
+                }
+                else if (allowMovement && (xbox_vAxis < 0 || xbox_dvaxis < 0))
+                {
+                    allowMovement = false;
+                    //down
+                    selectedButton++;
+                    if (selectedButton >= Buttons.Length)
+                    {
+                        selectedButton = 0;
+                    }
+                }
+                else if (!allowMovement && xbox_vAxis == 0 && xbox_dvaxis == 0)
+                {
+                    allowMovement = true;
+                }
+
+                Buttons[selectedButton].Select();
+
+                if (xbox_a)
+                {
+                    Buttons[selectedButton].onClick.Invoke();
+                }
+            }
+            #endregion
+            #region CharacterSelect
+            if (CurrentScreen == Screen.CharacterSelect)
+            {
+                if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0))
+                {
+                    //right
+                    allowMovement = false;
+                    selectedButton++;
+                    if (selectedButton >= 4)
+                    {
+                        selectedButton = 0;
+                    }
+                }
+                else if (allowMovement && (xbox_hAxis < 0 || xbox_dhaxis < 0))
+                {
+                    //left
+                    allowMovement = false;
+                    selectedButton--;
+                    if (selectedButton < 0)
+                    {
+                        selectedButton = 3;
+                    }
+                }
+                else if (allowMovement && (xbox_vAxis > 0 || xbox_dvaxis > 0))
+                {
+                    //up
+                    selectedButton = 4;
+                }
+                else if (allowMovement && (xbox_vAxis < 0 || xbox_dvaxis < 0))
+                {
+                    //down
                     selectedButton = 0;
                 }
-            }
-            else if (!allowMovement && xbox_vAxis == 0 && xbox_dvaxis == 0)
-            {
-                allowMovement = true;
-            }
+                else if (!allowMovement && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
+                {
+                    allowMovement = true;
+                }
 
-            Buttons[selectedButton].Select();
 
-            if (xbox_a)
-            {
-                Buttons[selectedButton].onClick.Invoke();
+                Buttons[selectedButton].Select();
+
+                if (xbox_a)
+                {
+                    Buttons[selectedButton].onClick.Invoke();
+                }
             }
+            #endregion
+            #region StageSelect
+            if (CurrentScreen == Screen.StageSelect)
+            {
+                if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0 || xbox_vAxis < 0 || xbox_dvaxis < 0))
+                {
+                    //right
+                    allowMovement = false;
+                    selectedButton++;
+                    if (selectedButton >= Buttons.Length)
+                    {
+                        selectedButton = 0;
+                    }
+                }
+                else if (allowMovement && (xbox_hAxis < 0 || xbox_dhaxis < 0 || xbox_vAxis > 0 || xbox_dvaxis > 0))
+                {
+                    //left
+                    allowMovement = false;
+                    selectedButton--;
+                    if (selectedButton < 0)
+                    {
+                        selectedButton = Buttons.Length - 1;
+                    }
+                }
+                else if (!allowMovement && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
+                {
+                    allowMovement = true;
+                }
+
+                Buttons[selectedButton].Select();
+
+                if (xbox_a)
+                {
+                    Buttons[selectedButton].onClick.Invoke();
+                }
+            }
+            #endregion
         }
-        #endregion
-        #region CharacterSelect
-        if (CurrentScreen == Screen.CharacterSelect)
-        {
-            if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0))
-            {
-                //right
-                allowMovement = false;
-                selectedButton++;
-                if (selectedButton >= 4)
-                {
-                    selectedButton = 0;
-                }
-            }
-            else if (allowMovement && (xbox_hAxis < 0 || xbox_dhaxis < 0))
-            {
-                //left
-                allowMovement = false;
-                selectedButton--;
-                if (selectedButton < 0)
-                {
-                    selectedButton = 3;
-                }
-            }
-            else if (allowMovement && (xbox_vAxis > 0 || xbox_dvaxis > 0))
-            {
-                //up
-                selectedButton = 4;
-            }
-            else if (allowMovement && (xbox_vAxis < 0 || xbox_dvaxis < 0))
-            {
-                //down
-                selectedButton = 0;
-            }
-            else if (!allowMovement && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
-            {
-                allowMovement = true;
-            }
-
-
-            Buttons[selectedButton].Select();
-
-            if (xbox_a)
-            {
-                Buttons[selectedButton].onClick.Invoke();
-            }
-        }
-        #endregion
-        #region StageSelect
-        if (CurrentScreen == Screen.StageSelect)
-        {
-            if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0 || xbox_vAxis < 0 || xbox_dvaxis < 0))
-            {
-                //right
-                allowMovement = false;
-                selectedButton++;
-                if (selectedButton >= Buttons.Length)
-                {
-                    selectedButton = 0;
-                }
-            }
-            else if (allowMovement && (xbox_hAxis < 0 || xbox_dhaxis < 0 || xbox_vAxis > 0 || xbox_dvaxis > 0))
-            {
-                //left
-                allowMovement = false;
-                selectedButton--;
-                if (selectedButton < 0)
-                {
-                    selectedButton = Buttons.Length - 1;
-                }
-            }
-            else if (!allowMovement && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
-            {
-                allowMovement = true;
-            }
-
-            Buttons[selectedButton].Select();
-
-            if (xbox_a)
-            {
-                Buttons[selectedButton].onClick.Invoke();
-            }
-        }
-        #endregion
-
     }
 
     void ReadXbox()
