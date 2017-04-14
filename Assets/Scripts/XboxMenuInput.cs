@@ -47,11 +47,13 @@ public class XboxMenuInput : MonoBehaviour
     private int selectedButton;
     bool allowMovement = false;
 
+
     // Update is called once per frame
     void Update()
     {
         ReadXbox();
 
+        #region Title
         if (CurrentScreen == Screen.Title)
         {
             if (xbox_a)
@@ -95,7 +97,8 @@ public class XboxMenuInput : MonoBehaviour
                 Buttons[selectedButton].onClick.Invoke();
             }
         }
-
+        #endregion
+        #region CharacterSelect
         if (CurrentScreen == Screen.CharacterSelect)
         {
             if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0))
@@ -141,6 +144,43 @@ public class XboxMenuInput : MonoBehaviour
                 Buttons[selectedButton].onClick.Invoke();
             }
         }
+        #endregion
+        #region StageSelect
+        if (CurrentScreen == Screen.StageSelect)
+        {
+            if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0 || xbox_vAxis < 0 || xbox_dvaxis < 0))
+            {
+                //right
+                allowMovement = false;
+                selectedButton++;
+                if (selectedButton >= Buttons.Length)
+                {
+                    selectedButton = 0;
+                }
+            }
+            else if (allowMovement && (xbox_hAxis < 0 || xbox_dhaxis < 0 || xbox_vAxis > 0 || xbox_dvaxis > 0))
+            {
+                //left
+                allowMovement = false;
+                selectedButton--;
+                if (selectedButton < 0)
+                {
+                    selectedButton = Buttons.Length - 1;
+                }
+            }
+            else if (!allowMovement && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
+            {
+                allowMovement = true;
+            }
+
+            Buttons[selectedButton].Select();
+
+            if (xbox_a)
+            {
+                Buttons[selectedButton].onClick.Invoke();
+            }
+        }
+        #endregion
 
     }
 
