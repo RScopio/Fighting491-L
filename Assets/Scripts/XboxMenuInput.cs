@@ -43,9 +43,9 @@ public class XboxMenuInput : MonoBehaviour
 
 
     public Button PlayButton;
-    public Button[] MainMenuButtons = new Button[6];
+    public Button[] Buttons = new Button[6];
     private int selectedButton;
-    bool allowMovement = true;
+    bool allowMovement = false;
 
     // Update is called once per frame
     void Update()
@@ -70,7 +70,7 @@ public class XboxMenuInput : MonoBehaviour
                 selectedButton--;
                 if (selectedButton < 0)
                 {
-                    selectedButton = MainMenuButtons.Length - 1;
+                    selectedButton = Buttons.Length - 1;
                 }
             }
             else if (allowMovement && (xbox_vAxis < 0 || xbox_dvaxis < 0))
@@ -78,7 +78,7 @@ public class XboxMenuInput : MonoBehaviour
                 allowMovement = false;
                 //down
                 selectedButton++;
-                if (selectedButton >= MainMenuButtons.Length)
+                if (selectedButton >= Buttons.Length)
                 {
                     selectedButton = 0;
                 }
@@ -88,14 +88,59 @@ public class XboxMenuInput : MonoBehaviour
                 allowMovement = true;
             }
 
-            MainMenuButtons[selectedButton].Select();
+            Buttons[selectedButton].Select();
 
             if (xbox_a)
             {
-                MainMenuButtons[selectedButton].onClick.Invoke();
+                Buttons[selectedButton].onClick.Invoke();
             }
         }
 
+        if (CurrentScreen == Screen.CharacterSelect)
+        {
+            if (allowMovement && (xbox_hAxis > 0 || xbox_dhaxis > 0))
+            {
+                //right
+                allowMovement = false;
+                selectedButton++;
+                if (selectedButton >= 4)
+                {
+                    selectedButton = 0;
+                }
+            }
+            else if (allowMovement && (xbox_hAxis < 0 || xbox_dhaxis < 0))
+            {
+                //left
+                allowMovement = false;
+                selectedButton--;
+                if (selectedButton < 0)
+                {
+                    selectedButton = 3;
+                }
+            }
+            else if (allowMovement && (xbox_vAxis > 0 || xbox_dvaxis > 0))
+            {
+                //up
+                selectedButton = 4;
+            }
+            else if (allowMovement && (xbox_vAxis < 0 || xbox_dvaxis < 0))
+            {
+                //down
+                selectedButton = 0;
+            }
+            else if (!allowMovement && xbox_hAxis == 0 && xbox_dhaxis == 0 && xbox_vAxis == 0 && xbox_dvaxis == 0)
+            {
+                allowMovement = true;
+            }
+
+
+            Buttons[selectedButton].Select();
+
+            if (xbox_a)
+            {
+                Buttons[selectedButton].onClick.Invoke();
+            }
+        }
 
     }
 
