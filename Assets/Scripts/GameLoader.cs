@@ -34,7 +34,7 @@ public class GameLoader : MonoBehaviour
                 player = prefab as GameObject;
             }
 
-            if ((prefab as GameObject).name == charInfo.OtherCharacter)
+            if (stageInfo.GameMode == StageInfo.GameType.Local && (prefab as GameObject).name == charInfo.OtherCharacter)
             {
                 secondPlayer = prefab as GameObject;
             }

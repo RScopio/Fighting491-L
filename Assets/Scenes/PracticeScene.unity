@@ -343,6 +343,10 @@ Prefab:
       propertyPath: DoesRegen
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1081834900133498, guid: 035b52f4f8891fc40b5bd497549048b9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 035b52f4f8891fc40b5bd497549048b9, type: 2}
   m_IsPrefabParent: 0
@@ -1095,12 +1099,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &400004089 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000011652055886, guid: 035b52f4f8891fc40b5bd497549048b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 86297994}
-  m_Script: {fileID: 11500000, guid: 719ed3c8523899d4993202388f16fffa, type: 3}
 --- !u!1 &437304737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1359,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 400004089}
+      - m_Target: {fileID: 0}
         m_MethodName: set_MH
         m_Mode: 0
         m_Arguments:
@@ -2472,7 +2470,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 400004089}
+      - m_Target: {fileID: 0}
         m_MethodName: set_RRT
         m_Mode: 0
         m_Arguments:
@@ -3063,7 +3061,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 400004089}
+      - m_Target: {fileID: 0}
         m_MethodName: set_CH
         m_Mode: 0
         m_Arguments:
