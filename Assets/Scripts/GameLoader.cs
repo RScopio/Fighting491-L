@@ -18,6 +18,11 @@ public class GameLoader : MonoBehaviour
 
     void Start()
     {
+        AudioSource music = GameObject.Find("SoundManager").GetComponents<AudioSource>()[1];
+        Object[] songs = Resources.LoadAll("BattleMusic");
+        music.clip = songs[Random.Range(0, songs.Length - 1)] as AudioClip;
+        music.Play();
+
         GameObject gameController = GameObject.Find("GameController");
         charInfo = gameController.GetComponent<CharacterInfo>();
         stageInfo = gameController.GetComponent<StageInfo>();
