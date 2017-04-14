@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class CountDownTime : MonoBehaviour
 {
     public float RemainTime;
@@ -20,6 +22,7 @@ public class CountDownTime : MonoBehaviour
         else
         {
             RemainTime = 0;
+            SceneManager.LoadScene(1);
         }
         counter.text = "" + Mathf.Round(RemainTime);
     }
